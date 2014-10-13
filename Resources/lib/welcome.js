@@ -1,7 +1,8 @@
+var drawer = require('lib/drawer');
 exports.init = function(){
 	var welcomeWindow = Ti.UI.createWindow({
 		backgroundImage:'images/page-bg.jpg',
-		layout:'vertical'
+		
 	});
 	
 	var welcomeHeaderView = Ti.UI.createView({
@@ -15,7 +16,9 @@ exports.init = function(){
 	});
 	
 	var scrollView = Ti.UI.createScrollView({
-		layout:'vertical'
+		layout:'vertical',
+		zIndex:1,
+		top:(isIOS) ? '67'+unit:'45'+unit
 	});
 	
 	var welcomeHeaderLabel = Ti.UI.createLabel({
@@ -23,7 +26,7 @@ exports.init = function(){
 		font:{
 			fontFamily:'Arial',
 			fontWeight:'bold',
-			fontSize:20
+			fontSize:18
 		},
 		color:'#fff'
 	});
@@ -33,6 +36,17 @@ exports.init = function(){
 		left:'10'+unit,
 		height:'35'+unit,
 		width:'35'+unit
+	});
+
+	
+	menuIcon.addEventListener('click',function(){
+		if(menuToggle){
+			drawer.showDrawer();
+			menuToggle = false;
+		}else{
+			drawer.hideDrawer();
+			menuToggle = true;
+		}
 	});
 	
 	var mainLogoImageView = Ti.UI.createImageView({
@@ -87,5 +101,7 @@ exports.init = function(){
 	welcomeWindow.add(welcomeHeaderView);
 	welcomeWindow.add(scrollView);
 	
+	currentWindow = welcomeWindow;
+	console.log(currentWindow.getChildren().length);
 	welcomeWindow.open();
 };
