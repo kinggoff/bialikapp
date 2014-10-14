@@ -13,19 +13,19 @@ prospectListContainerView.add(Ti.UI.createLabel({
 	},
 	color:'#3862b7',
 	left:0,
-	top:'20'+unit
+	top:'20dp'
 }));
 
 prospectListContainerView.add(Ti.UI.createImageView({
 	image:path+'images/menu-logo.png',
 	right:0,
-	top:'15'+unit,
-	width:'60'+unit
+	top:'15dp',
+	width:'60dp'
 }));
 
 var prospectScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
-	top:'70'+unit,
+	top:'70dp',
 	//backgroundColor:'green'
 });
 
@@ -38,12 +38,12 @@ var prospectConfig = [
 	{
 		name:'Welcome to Our School',
 		icon:path+'images/icons/welcome.png',
-		win:''
+		win:'welcometoourschool'
 	},
 	{
 		name:'School Life',
 		icon:path+'images/icons/school-life.png',
-		win:''
+		win:'schoollife'
 	},
 	{
 		name:'Application & Info',
@@ -80,14 +80,14 @@ for (var i=0; i<prospectConfig.length; i++){
 	var row = Ti.UI.createTableViewRow({
 		className:'forumEvent',
 		rowIndex:i,
-		height:50
+		height:'50dp'
 	});
 	
 	var prospectMenuIcon = Ti.UI.createImageView({
 		image:item.icon,
 		left:0,
-		width:30,
-		height:30
+		width:'30dp',
+		height:'30dp'
 	});
 	row.add(prospectMenuIcon);
 	
@@ -120,5 +120,7 @@ exports.setActive = function(){
 };
 
 tableView.addEventListener('click',function(e){
-	
+	var index = e.index;
+	var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
+	drawer.hideDrawerThenOpenNewWindow(winToOpen);
 });

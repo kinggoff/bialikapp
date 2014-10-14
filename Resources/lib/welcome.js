@@ -1,22 +1,23 @@
 exports.init = function(){
 	var welcomeWindow = Ti.UI.createWindow({
 		backgroundImage:'images/page-bg.jpg',
+		c_winName:'prospect_home'
 	});
 	
 	var welcomeHeaderView = Ti.UI.createView({
 		backgroundColor:'blue',
-		height:'45'+unit,
+		height:'45dp',
 		top:(isIOS) ? 22:0,
 		backgroundGradient: {
 			type:'linear',
 			colors:[{color:'#02a6d2',offset:0.0},{color:'#0000d2',offset:1}],
-		}
+		},
 	});
 	
 	var scrollView = Ti.UI.createScrollView({
 		layout:'vertical',
 		zIndex:1,
-		top:(isIOS) ? '67'+unit:'45'+unit
+		top:(isIOS) ? '67dp':'45dp'
 	});
 	
 	var welcomeHeaderLabel = Ti.UI.createLabel({
@@ -31,11 +32,13 @@ exports.init = function(){
 	
 	var menuIcon = Ti.UI.createImageView({
 		image:path+'images/icons/menu.png',
-		left:'15'+unit,
-		height:'25'+unit,
+		left:'15dp',
+		height:'25dp',
 		//width:'35'+unit
 	});
+	
 	/////////
+	/*
 	var tempToggle = true;
 	var tempText = Ti.UI.createButton({
 		title:'sac',
@@ -52,6 +55,7 @@ exports.init = function(){
 	});
 	
 	welcomeHeaderView.add(tempText);
+	*/
 	/////////
 	
 	menuIcon.addEventListener('click',function(){
@@ -67,7 +71,7 @@ exports.init = function(){
 	var mainLogoImageView = Ti.UI.createImageView({
 		image:path+'images/logo.png',
 		width:'90%',
-		top:'20'+unit
+		top:'20dp'
 	});
 	
 	var welcomeToOurSchoolLabel = Ti.UI.createLabel({
@@ -78,17 +82,17 @@ exports.init = function(){
 			fontWeight:'bold',
 			fontSize:16
 		},
-		top:'25'+unit
+		top:'25dp'
 	});
 	
 	var schoolImageView1 = Ti.UI.createImageView({
-		top:'15'+unit,
+		top:'15dp',
 		image:path+'images/welcome-school-1.jpg',
 		width:'100%'
 	});
 	
 	var dearParentsLabel = Ti.UI.createLabel({
-		top:'20'+unit,
+		top:'20dp',
 		font:{
 			fontFamily:'Arial',
 			fontSize:14
@@ -101,7 +105,7 @@ exports.init = function(){
 	var footorImageView = Ti.UI.createImageView({
 		image:path+'images/logo-footer.png',
 		width:'80%',
-		top:'25'+unit
+		top:'25dp'
 	});
 	
 	welcomeHeaderView.add(menuIcon);

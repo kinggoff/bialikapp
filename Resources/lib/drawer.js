@@ -3,7 +3,7 @@ var menuContainer = Ti.UI.createView({
 	left:'-100%',
 	height:Ti.UI.FILL,
 	zIndex:2,
-	top:(isIOS) ? '67'+unit:'45'+unit
+	top:(isIOS) ? '67dp':'45dp'
 });
 
 var background = Ti.UI.createView({
@@ -53,3 +53,8 @@ exports.setDrawerList = function(view){
 	listContainer.add(view);
 };
 
+exports.hideDrawerThenOpenNewWindow = function(winToOpen){
+	menuContainer.setLeft('-100%');
+	winToOpen.open();
+	menuToggle = true;
+};
