@@ -1,8 +1,6 @@
-var drawer = require('lib/drawer');
 exports.init = function(){
 	var welcomeWindow = Ti.UI.createWindow({
 		backgroundImage:'images/page-bg.jpg',
-		
 	});
 	
 	var welcomeHeaderView = Ti.UI.createView({
@@ -32,12 +30,29 @@ exports.init = function(){
 	});
 	
 	var menuIcon = Ti.UI.createImageView({
-		image:path+'images/myicons/menu-icon.png',
-		left:'10'+unit,
-		height:'35'+unit,
-		width:'35'+unit
+		image:path+'images/icons/menu.png',
+		left:'15'+unit,
+		height:'25'+unit,
+		//width:'35'+unit
 	});
-
+	/////////
+	var tempToggle = true;
+	var tempText = Ti.UI.createButton({
+		title:'sac',
+		right:10
+	});
+	tempText.addEventListener('click',function(){
+		if(tempToggle){
+			currentMenuList.setActive();
+			tempToggle = false;
+		}else{
+			prospectMenuList.setActive();
+			tempToggle = true;
+		}
+	});
+	
+	welcomeHeaderView.add(tempText);
+	/////////
 	
 	menuIcon.addEventListener('click',function(){
 		if(menuToggle){
@@ -102,6 +117,5 @@ exports.init = function(){
 	welcomeWindow.add(scrollView);
 	
 	currentWindow = welcomeWindow;
-	console.log(currentWindow.getChildren().length);
 	welcomeWindow.open();
 };

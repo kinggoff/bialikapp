@@ -46,6 +46,10 @@ exports.hideDrawer = function(){
 	menuContainer.animate(slideOut);
 };
 
-exports.setDrawerList = function(){
-	listContainer.removeAllChildren();
+exports.setDrawerList = function(view){
+	if(listContainer.getChildren().length > 1){
+		listContainer.removeAllChildren();
+	}
+	listContainer.add(view);
 };
+
