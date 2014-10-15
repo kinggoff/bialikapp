@@ -30,11 +30,11 @@ exports.init = function(){
 		color:'#fff'
 	});
 	
-	var menuIcon = Ti.UI.createImageView({
-		image:path+'images/icons/menu.png',
+	var menuIcon = Ti.UI.createButton({
 		left:'15dp',
+		backgroundImage:path+'images/icons/menu.png',
 		height:'25dp',
-		//width:'35'+unit
+		width:'30dp'
 	});
 	
 	/////////

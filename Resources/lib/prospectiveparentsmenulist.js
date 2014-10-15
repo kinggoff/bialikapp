@@ -48,12 +48,12 @@ var prospectConfig = [
 	{
 		name:'Application & Info',
 		icon:path+'images/icons/application-info.png',
-		win:''
+		win:'appandinfo'
 	},
 	{
 		name:'Book Recommendations',
 		icon:path+'images/icons/book-recommendations.png',
-		win:''
+		win:'bookrecommendations'
 	},
 	{
 		name:'Facebook',
@@ -63,12 +63,12 @@ var prospectConfig = [
 	{
 		name:'Contact',
 		icon:path+'images/icons/contact-current.png',
-		win:''
+		win:'contact'
 	},
 	{
 		name:'Settings',
 		icon:path+'images/icons/settings.png',
-		win:''
+		win:'settings'
 	},
 ];
 
@@ -107,7 +107,8 @@ var tableView = Ti.UI.createTableView({
 	data:tableData,
 	separatorInsets:{
 		left:0
-	}
+	},
+	height:(50*(prospectConfig.length+((isIOS) ? 0:1)))+'dp'
 });
 
 prospectScrollView.add(tableView);
@@ -121,6 +122,10 @@ exports.setActive = function(){
 
 tableView.addEventListener('click',function(e){
 	var index = e.index;
-	var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
-	drawer.hideDrawerThenOpenNewWindow(winToOpen);
+	if(index == 5){
+		Titanium.Platform.openURL('http://www.facebook.com/bialik');
+	}else{
+		var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
+		drawer.hideDrawerThenOpenNewWindow(winToOpen);
+	}
 });

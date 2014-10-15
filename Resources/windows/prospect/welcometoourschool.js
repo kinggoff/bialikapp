@@ -30,11 +30,11 @@ exports.open = function(){
 		color:'#fff'
 	});
 	
-	var welcomeToOurSchoolMenuIcon = Ti.UI.createImageView({
-		image:path+'images/icons/menu.png',
-		left:'15'+unit,
-		height:'25'+unit,
-		//width:'35'+unit
+	var welcomeToOurSchoolMenuIcon = Ti.UI.createButton({
+		left:'15dp',
+		backgroundImage:path+'images/icons/menu.png',
+		height:'25dp',
+		width:'30dp'
 	});
 	
 	welcomeToOurSchoolMenuIcon.addEventListener('click',function(){
@@ -110,5 +110,5 @@ exports.open = function(){
 	welcomeToOurSchoolWindow.add(welcomeToOurSchoolScrollView);
 	
 	currentWindow = welcomeToOurSchoolWindow;
-	welcomeToOurSchoolWindow.open();
+	welcomeToOurSchoolWindow.open({animated:false});
 };
