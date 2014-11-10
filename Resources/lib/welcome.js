@@ -1,23 +1,36 @@
 exports.init = function(){
 	var welcomeWindow = Ti.UI.createWindow({
-		backgroundImage:'images/page-bg.jpg',
+		backgroundColor:'#000',
 		c_winName:'prospect_home'
 	});
 	
 	var welcomeHeaderView = Ti.UI.createView({
 		backgroundColor:'blue',
-		height:'45dp',
+		height:'40dp',
+		width:Ti.UI.FILL,
 		top:(isIOS) ? 22:0,
 		backgroundGradient: {
 			type:'linear',
-			colors:[{color:'#02a6d2',offset:0.0},{color:'#0000d2',offset:1}],
+			colors:[
+				{color:'#00b8e9',offset:0.00},
+				{color:'#0079eb',offset:0.50},
+				{color:'#0066e8',offset:0.51},
+				{color:'#0030a0',offset:1.00}
+			],
 		},
+		viewShadowColor:'#2e2e2e',
+		viewShadowOffset:{
+			x:0.0,
+			y:0.0
+		},
+		zIndex:99
 	});
 	
 	var scrollView = Ti.UI.createScrollView({
 		layout:'vertical',
 		zIndex:1,
-		top:(isIOS) ? '67dp':'45dp'
+		top:(isIOS) ? '62dp':'40dp',
+		backgroundImage:'images/welcomeScreen/page-bg.jpg'
 	});
 	
 	var welcomeHeaderLabel = Ti.UI.createLabel({
@@ -25,18 +38,40 @@ exports.init = function(){
 		font:{
 			fontFamily:'Arial',
 			fontWeight:'bold',
-			fontSize:18
+			fontSize:16
 		},
-		color:'#fff'
+		color:'#fff',
+		shadowColor:'#000',
+		shadowOffset:{
+			x:1.0,
+			y:0.5
+		}
 	});
 	
-	var menuIcon = Ti.UI.createButton({
-		left:'15dp',
-		backgroundImage:path+'images/icons/menu.png',
-		height:'25dp',
-		width:'30dp'
+	var menuIcon = Ti.UI.createView({
+		backgroundGradient: {
+			type:'linear',
+			colors:[
+				{color:'#0cd7fd',offset:0.00},
+				{color:'#00aff8',offset:0.50},
+				{color:'#0095f4',offset:0.51},
+				{color:'#007fd1',offset:1.00}
+			],
+		},
+		height:'30dp',
+		width:'50dp',
+		left:'5dp',
+		borderColor:'#002162',
+		borderRadius:5,
+		borderWidth:.5
 	});
 	
+	menuIcon.add(Ti.UI.createButton({
+			backgroundImage:path+'images/common/menu.png',
+			height:'20dp',
+			width:'25dp',
+		})
+	);
 	/////////
 	/*
 	var tempToggle = true;
@@ -69,43 +104,44 @@ exports.init = function(){
 	});
 	
 	var mainLogoImageView = Ti.UI.createImageView({
-		image:path+'images/logo.png',
+		image:path+'images/welcomeScreen/logo.png',
 		width:'90%',
 		top:'20dp'
 	});
 	
 	var welcomeToOurSchoolLabel = Ti.UI.createLabel({
-		text:'Welcome To Our School',
-		color:'#0000d2',
+		text:'Welcome to Bialik Hebrew Day School',
+		color:defaultBlueColor,
 		font:{
 			fontFamily:'Arial',
 			fontWeight:'bold',
-			fontSize:16
+			fontSize:15
 		},
-		top:'25dp'
+		top:'15dp',
+		width:'273dp'
+	});
+	
+	var welcomeToOurSchoolLabel2 = Ti.UI.createLabel({
+		top:'10dp',
+		font:{
+			fontFamily:'Arial',
+			fontSize:13
+		},
+		color:defaultBlueColor,
+		width:'273dp',
+		text:'For over fifty years, Bialik Hebrew Day Schools has stood at the forefront of Jewish and general education in Toronto, providing students from JK to grade 8 with a dynamic and meaningful school experience.'
 	});
 	
 	var schoolImageView1 = Ti.UI.createImageView({
-		top:'15dp',
-		image:path+'images/welcome-school-1.jpg',
+		top:'25dp',
+		image:path+'images/welcomeScreen/welcome-school-1.jpg',
 		width:'100%'
 	});
 	
-	var dearParentsLabel = Ti.UI.createLabel({
-		top:'20dp',
-		font:{
-			fontFamily:'Arial',
-			fontSize:14
-		},
-		color:'#204eab',
-		width:'90%',
-		text:'Dear Parents,\n\nFor over fifty two years, Bialik Hebrew Day Schools has stood at the forefront of Jewish and general education in Toronto, providing students from JK to grade 8 with a dynamic and meaningful school experience.',
-	});
-	
-	var footorImageView = Ti.UI.createImageView({
-		image:path+'images/logo-footer.png',
-		width:'80%',
-		top:'25dp'
+	var recipientOfSupportLabel = Ti.UI.createImageView({
+		top:'25dp',
+		image:path+'images/welcomeScreen/logo-uja.png',
+		width:'150dp'
 	});
 	
 	welcomeHeaderView.add(menuIcon);
@@ -113,9 +149,9 @@ exports.init = function(){
 	
 	scrollView.add(mainLogoImageView);
 	scrollView.add(welcomeToOurSchoolLabel);
+	scrollView.add(welcomeToOurSchoolLabel2);
 	scrollView.add(schoolImageView1);
-	scrollView.add(dearParentsLabel);
-	scrollView.add(footorImageView);
+	scrollView.add(recipientOfSupportLabel);
 	
 	welcomeWindow.add(welcomeHeaderView);
 	welcomeWindow.add(scrollView);

@@ -3,7 +3,7 @@ var menuContainer = Ti.UI.createView({
 	left:'-100%',
 	height:Ti.UI.FILL,
 	zIndex:2,
-	top:(isIOS) ? '67dp':'45dp'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var background = Ti.UI.createView({
@@ -14,7 +14,7 @@ var background = Ti.UI.createView({
 });
 
 var listContainer = Ti.UI.createView({
-	backgroundColor:'#01268f',
+	backgroundImage:path+'images/common/drawer-bg.jpg',
 	width:'90%',
 	left:0,
 	zIndex:4

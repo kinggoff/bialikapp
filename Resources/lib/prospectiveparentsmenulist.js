@@ -9,24 +9,29 @@ prospectListContainerView.add(Ti.UI.createLabel({
 	text:'Prospective Parents',
 	font:{
 		fontFamily:'Arial',
-		fontSize:22
+		fontSize:20
 	},
-	color:'#3862b7',
+	color:'#4779c4',
 	left:0,
-	top:'20dp'
+	top:'30dp'
 }));
 
 prospectListContainerView.add(Ti.UI.createImageView({
-	image:path+'images/menu-logo.png',
+	image:path+'images/bialik_app_icon.png',
 	right:0,
-	top:'15dp',
-	width:'60dp'
+	top:'18dp',
+	width:'50dp'
+}));
+
+prospectListContainerView.add(Ti.UI.createImageView({
+	image:path+'images/logo-footer.png',
+	bottom:'15dp',
+	width:'230dp'
 }));
 
 var prospectScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
-	top:'70dp',
-	//backgroundColor:'green'
+	top:'70dp'
 });
 
 var prospectConfig = [
@@ -80,7 +85,7 @@ for (var i=0; i<prospectConfig.length; i++){
 	var row = Ti.UI.createTableViewRow({
 		className:'forumEvent',
 		rowIndex:i,
-		height:'50dp'
+		height:'40dp'
 	});
 	
 	var prospectMenuIcon = Ti.UI.createImageView({
@@ -105,10 +110,11 @@ for (var i=0; i<prospectConfig.length; i++){
 var tableView = Ti.UI.createTableView({
 	backgroundColor:'transparent',
 	data:tableData,
+	separatorColor:'#4779c4',
 	separatorInsets:{
 		left:0
 	},
-	height:(50*(prospectConfig.length+((isIOS) ? 0:1)))+'dp'
+	height:(40*(prospectConfig.length+((isIOS) ? 0:1)))+'dp'
 });
 
 prospectScrollView.add(tableView);
