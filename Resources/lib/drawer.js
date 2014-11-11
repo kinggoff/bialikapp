@@ -20,10 +20,8 @@ var listContainer = Ti.UI.createView({
 	zIndex:4
 });
 
-var prospectList = prospectMenuList.getList();
-
 if(true){
-	listContainer.add(prospectList);
+	listContainer.add(prospectMenuList.getList());
 }else{
 	console.log(false);
 }
@@ -38,12 +36,12 @@ drawerContainer.add(Ti.UI.createImageView({
 
 var slideIn = Ti.UI.createAnimation({
 	left:0,
-	duration:300
+	duration:(isIOS) ? 300:150
 });
 
 var slideOut = Ti.UI.createAnimation({
 	left:'-100%',
-	duration:300
+	duration:(isIOS) ? 300:150
 });
 
 exports.getDrawer = function(){
@@ -57,3 +55,9 @@ exports.showDrawer = function(){
 exports.hideDrawer = function(){
 	drawerContainer.animate(slideOut);
 };
+
+exports.updateDrawer = function(list){
+	listContainer.removeAllChildren();
+	listContainer.add(list);
+};
+

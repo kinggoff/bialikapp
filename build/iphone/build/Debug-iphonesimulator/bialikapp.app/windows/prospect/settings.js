@@ -1,1 +1,0 @@
-/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/Resources/windows/prospect/settings.js

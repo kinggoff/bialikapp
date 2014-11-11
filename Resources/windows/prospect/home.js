@@ -12,45 +12,44 @@ var mainLogoImageView = Ti.UI.createImageView({
 });
 
 var welcomeToOurSchoolLabel = Ti.UI.createLabel({
-	text:'Welcome to Bialik Hebrew Day School',
+	text:'Welcome To Our School',
 	color:defaultBlueColor,
 	font:{
 		fontFamily:'Arial',
 		fontWeight:'bold',
-		fontSize:15
+		fontSize:16
 	},
-	top:'15dp',
-	width:'273dp'
-});
-
-var welcomeToOurSchoolLabel2 = Ti.UI.createLabel({
-	top:'10dp',
-	font:{
-		fontFamily:'Arial',
-		fontSize:13
-	},
-	color:defaultBlueColor,
-	width:'273dp',
-	text:'For over fifty years, Bialik Hebrew Day Schools has stood at the forefront of Jewish and general education in Toronto, providing students from JK to grade 8 with a dynamic and meaningful school experience.'
+	top:'25dp'
 });
 
 var schoolImageView1 = Ti.UI.createImageView({
-	top:'25dp',
+	top:'15dp',
 	image:path+'images/welcomeScreen/welcome-school-1.jpg',
 	width:'100%'
 });
 
-var recipientOfSupportLabel = Ti.UI.createImageView({
-	top:'25dp',
-	image:path+'images/welcomeScreen/logo-uja.png',
-	width:'150dp'
+var dearParentsLabel = Ti.UI.createLabel({
+	top:'20dp',
+	font:{
+		fontFamily:'Arial',
+		fontSize:14
+	},
+	color:'#204eab',
+	width:'90%',
+	text:'Dear Parents,\n\nFor over fifty two years, Bialik Hebrew Day Schools has stood at the forefront of Jewish and general education in Toronto, providing students from JK to grade 8 with a dynamic and meaningful school experience.',
+});
+
+var footorImageView = Ti.UI.createImageView({
+	image:path+'images/logo-footer.png',
+	width:'80%',
+	top:'25dp'
 });
 
 prospectHomeScrollView.add(mainLogoImageView);
 prospectHomeScrollView.add(welcomeToOurSchoolLabel);
-prospectHomeScrollView.add(welcomeToOurSchoolLabel2);
 prospectHomeScrollView.add(schoolImageView1);
-prospectHomeScrollView.add(recipientOfSupportLabel);
+prospectHomeScrollView.add(dearParentsLabel);
+prospectHomeScrollView.add(footorImageView);
 
 exports.getView = function(){
 	return prospectHomeScrollView;

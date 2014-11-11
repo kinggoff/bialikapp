@@ -8,6 +8,9 @@ var currentWindow;
 var menuToggle = true;
 var defaultBlueColor = '#0046ac';
 
+var mainWindow = Ti.UI.createWindow({
+	backgroundColor:'#000'
+});
 
 var prospectMenuList = require('lib/prospectiveparentsmenulist');
 var currentMenuList = require('lib/currentparentsmenulist');

@@ -32,7 +32,7 @@ var prospectConfig = [
 	{
 		name:'Home',
 		icon:path+'images/icons/home.png',
-		win:''
+		win:'home'
 	},
 	{
 		name:'Welcome to Our School',
@@ -116,7 +116,14 @@ tableView.addEventListener('click',function(e){
 	if(index == 5){
 		Titanium.Platform.openURL('http://www.facebook.com/bialik');
 	}else{
-		var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
+		var _view = require('windows/prospect/'+prospectConfig[index].win);
+		if(mainWindow.children.length > 2){
+			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+		}
+		bialik_app.updateTitle(prospectConfig[index].name);
+		mainWindow.add(_view.getView());
+		drawer.hideDrawer();
+		menuToggle = true;
 	}
 });
 

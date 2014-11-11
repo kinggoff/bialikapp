@@ -1,9 +1,5 @@
 var prospect_home = require('windows/prospect/home');
 
-var mainWindow = Ti.UI.createWindow({
-	backgroundColor:'#000'
-});
-
 var mainWindowHeaderView = Ti.UI.createView({
 	backgroundColor:'blue',
 	height:'40dp',
@@ -75,7 +71,24 @@ drawerButton.addEventListener('click',function(){
 		menuToggle = true;
 	}
 });
+/*
+var tempToggle = true;
+var tempText = Ti.UI.createButton({
+	title:'sac',
+	right:10
+});
+tempText.addEventListener('click',function(){
+	if(tempToggle){
+		drawer.updateDrawer(prospectMenuList.getList());
+		tempToggle = false;
+	}else{
+		drawer.updateDrawer(currentMenuList.getList());
+		tempToggle = true;
+	}
+});
 
+mainWindowHeaderView.add(tempText);
+*/
 mainWindowHeaderView.add(drawerButton);
 mainWindowHeaderView.add(mainWindowHeaderLabel);
 mainWindow.add(mainWindowHeaderView);
@@ -88,4 +101,9 @@ exports.init = function(){
 		console.log(false);
 	}
 	mainWindow.open();
+};
+
+
+exports.updateTitle = function(title){
+	mainWindowHeaderLabel.setText(title);
 };
