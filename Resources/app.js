@@ -9,10 +9,9 @@ var menuToggle = true;
 var defaultBlueColor = '#0046ac';
 
 
-var welcome = require('lib/welcome');
-var drawer = require('lib/drawer');
 var prospectMenuList = require('lib/prospectiveparentsmenulist');
 var currentMenuList = require('lib/currentparentsmenulist');
+var drawer = require('lib/drawer');
+var bialik_app = require('lib/bialik_app');
 
-prospectMenuList.setActive();
-welcome.init();
+bialik_app.init();

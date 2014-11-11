@@ -111,21 +111,18 @@ var tableView = Ti.UI.createTableView({
 	height:(40*(prospectConfig.length+((isIOS) ? 0:1)))+'dp'
 });
 
-prospectScrollView.add(tableView);
-
-prospectListContainerView.add(prospectScrollView);
-
-exports.setActive = function(){
-	drawer.setDrawerList(prospectListContainerView);
-	console.log('prospectListContainerView activated');
-};
-
 tableView.addEventListener('click',function(e){
 	var index = e.index;
 	if(index == 5){
 		Titanium.Platform.openURL('http://www.facebook.com/bialik');
 	}else{
 		var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
-		drawer.hideDrawerThenOpenNewWindow(winToOpen);
 	}
 });
+
+prospectScrollView.add(tableView);
+prospectListContainerView.add(prospectScrollView);
+
+exports.getList = function(){
+	return prospectListContainerView;
+};

@@ -1,4 +1,4 @@
-var menuContainer = Ti.UI.createView({
+var drawerContainer = Ti.UI.createView({
 	width:'100%',
 	left:'-100%',
 	height:Ti.UI.FILL,
@@ -20,9 +20,17 @@ var listContainer = Ti.UI.createView({
 	zIndex:4
 });
 
-menuContainer.add(background);
-menuContainer.add(listContainer);
-menuContainer.add(Ti.UI.createImageView({
+var prospectList = prospectMenuList.getList();
+
+if(true){
+	listContainer.add(prospectList);
+}else{
+	console.log(false);
+}
+
+drawerContainer.add(background);
+drawerContainer.add(listContainer);
+drawerContainer.add(Ti.UI.createImageView({
 	image:path+'images/logo-footer.png',
 	bottom:'15dp',
 	width:'230dp'
@@ -38,28 +46,14 @@ var slideOut = Ti.UI.createAnimation({
 	duration:300
 });
 
-slideOut.addEventListener('complete', function(e){
-	currentWindow.remove(menuContainer);
-});
+exports.getDrawer = function(){
+	return drawerContainer;
+};
 
 exports.showDrawer = function(){
-	currentWindow.add(menuContainer);
-	menuContainer.animate(slideIn);
+	drawerContainer.animate(slideIn);
 };
 
 exports.hideDrawer = function(){
-	menuContainer.animate(slideOut);
-};
-
-exports.setDrawerList = function(view){
-	if(listContainer.getChildren().length > 1){
-		listContainer.removeAllChildren();
-	}
-	listContainer.add(view);
-};
-
-exports.hideDrawerThenOpenNewWindow = function(winToOpen){
-	menuContainer.setLeft('-100%');
-	winToOpen.open();
-	menuToggle = true;
+	drawerContainer.animate(slideOut);
 };
