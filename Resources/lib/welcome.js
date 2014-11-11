@@ -30,7 +30,7 @@ exports.init = function(){
 		layout:'vertical',
 		zIndex:1,
 		top:(isIOS) ? '62dp':'40dp',
-		backgroundImage:'images/welcomeScreen/page-bg.jpg'
+		backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
 	});
 	
 	var welcomeHeaderLabel = Ti.UI.createLabel({

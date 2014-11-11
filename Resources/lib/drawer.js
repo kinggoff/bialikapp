@@ -22,6 +22,11 @@ var listContainer = Ti.UI.createView({
 
 menuContainer.add(background);
 menuContainer.add(listContainer);
+menuContainer.add(Ti.UI.createImageView({
+	image:path+'images/logo-footer.png',
+	bottom:'15dp',
+	width:'230dp'
+}));
 
 var slideIn = Ti.UI.createAnimation({
 	left:0,

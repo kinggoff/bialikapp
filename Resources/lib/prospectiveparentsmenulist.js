@@ -3,7 +3,7 @@ var prospectListContainerView = Ti.UI.createView({
 	height:Ti.UI.SIZE,
 	zIndex:5,
 	top:0
-}); 
+});
 
 prospectListContainerView.add(Ti.UI.createLabel({
 	text:'Prospective Parents',
