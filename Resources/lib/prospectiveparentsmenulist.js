@@ -23,12 +23,6 @@ prospectListContainerView.add(Ti.UI.createImageView({
 	width:'50dp'
 }));
 
-prospectListContainerView.add(Ti.UI.createImageView({
-	image:path+'images/logo-footer.png',
-	bottom:'15dp',
-	width:'230dp'
-}));
-
 var prospectScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	top:'70dp'
