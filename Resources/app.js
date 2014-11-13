@@ -1,3 +1,7 @@
+/*if(!Titanium.App.Properties.getString('EnrollmentType',null)){
+	Titanium.App.Properties.setString('EnrollmentType','prospective');
+}*/
+
 var isIOS = (Ti.Platform.osname != 'android') ? true:false;
 var isAndroid = (Ti.Platform.osname == 'android') ? true:false;
 var path = Titanium.Filesystem.resourcesDirectory;

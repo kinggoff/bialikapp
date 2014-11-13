@@ -20,12 +20,6 @@ var listContainer = Ti.UI.createView({
 	zIndex:4
 });
 
-if(true){
-	listContainer.add(prospectMenuList.getList());
-}else{
-	console.log(false);
-}
-
 drawerContainer.add(background);
 drawerContainer.add(listContainer);
 drawerContainer.add(Ti.UI.createImageView({
