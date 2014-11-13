@@ -36,7 +36,7 @@ exports.init = function(){
 	var welcomeHeaderLabel = Ti.UI.createLabel({
 		text:'Home',
 		font:{
-			fontFamily:'Arial',
+			fontFamily:helveticafont,
 			fontWeight:'bold',
 			fontSize:16
 		},
@@ -113,7 +113,7 @@ exports.init = function(){
 		text:'Welcome to Bialik Hebrew Day School',
 		color:defaultBlueColor,
 		font:{
-			fontFamily:'Arial',
+			fontFamily:helveticafont,
 			fontWeight:'bold',
 			fontSize:15
 		},
@@ -124,7 +124,7 @@ exports.init = function(){
 	var welcomeToOurSchoolLabel2 = Ti.UI.createLabel({
 		top:'10dp',
 		font:{
-			fontFamily:'Arial',
+			fontFamily:helveticafont,
 			fontSize:13
 		},
 		color:defaultBlueColor,

@@ -8,7 +8,7 @@ var currentListContainerView = Ti.UI.createView({
 currentListContainerView.add(Ti.UI.createLabel({
 	text:'Current Parents',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:20
 	},
 	color:'#4779c4',
@@ -92,7 +92,10 @@ for (var i=0; i<currentConfig.length; i++){
 	
 	var labelUserName = Ti.UI.createLabel({
 		color:'#fff',
-		font:{fontFamily:'Arial', fontSize:20},
+		font:{
+			fontFamily:helveticafont,
+			fontSize:20
+		},
 		text:item.name,
 		left:40,
 	});

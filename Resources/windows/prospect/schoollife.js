@@ -9,7 +9,7 @@ var SchoolLifeHeadingLabel = Ti.UI.createLabel({
 	text:'Videos of Our School',
 	color:'#03309b',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:24
 	},
@@ -90,7 +90,7 @@ for (var i=0; i<videoListConfig.length; i++){
 	var title = Ti.UI.createLabel({
 		text:item.title,
 		font:{
-			fontFamily:'Arial',
+			fontFamily:helveticafont,
 			fontSize:20
 		},
 		width:'55%',

@@ -27,7 +27,7 @@ applicationFormContainer.add(Ti.UI.createLabel({
 	text:'Application Form',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -53,7 +53,7 @@ brochureContainer.add(Ti.UI.createLabel({
 	text:'Brochure',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -79,7 +79,7 @@ IsraelBrochureContainer.add(Ti.UI.createLabel({
 	text:'Israel Interactive Centre Brochure',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -105,7 +105,7 @@ kindergartenContainer.add(Ti.UI.createLabel({
 	text:'Kindergarten',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -131,7 +131,7 @@ grade1to5Container.add(Ti.UI.createLabel({
 	text:'Grades 1 - 5',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -157,7 +157,7 @@ grade6to8Container.add(Ti.UI.createLabel({
 	text:'Grades 6 - 8',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -183,7 +183,7 @@ feesContainer.add(Ti.UI.createLabel({
 	text:'Fees',
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},

@@ -15,7 +15,7 @@ var welcomeToBialik = Ti.UI.createLabel({
 	text:'Welcome to the Bialik Hebrew Day School App. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec massa odio. Etiam adipiscing erat libero, nec eleifend nisl laoreet vitae. Quisque iaculis pellentesque pretium.',
 	color:defaultBlueColor,
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:12
 	},
 	top:'15dp',
@@ -36,7 +36,7 @@ var selectLocationLabel = Ti.UI.createLabel({
 	text:'Select Location',
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -69,7 +69,7 @@ var viewmountBranchButton = Ti.UI.createView({
 viewmountBranchButton.add(Ti.UI.createLabel({
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -106,7 +106,7 @@ var benEdithBranchButton = Ti.UI.createView({
 benEdithBranchButton.add(Ti.UI.createLabel({
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -116,13 +116,45 @@ benEdithBranchButton.add(Ti.UI.createLabel({
 benEdithBranchButtonContainer.add(benEdithBranchButton);
 //Current Button end
 
+//create event listeners
+viewmountBranchButtonContainer.addEventListener('click', function(){
+	drawer.updateDrawer(prospectMenuList.getList());
+	Titanium.App.Properties.setString('EnrollmentType','prospective');
+	var _view = require('windows/prospect/home');
+	bialik_app.updateTitle('Home');
+	bialik_app.addDrawerButton();
+	mainWindow.add(_view.getView());
+});
+
+benEdithBranchButtonContainer.addEventListener('click', function(){
+	drawer.updateDrawer(currentMenuList.getList());
+	//Titanium.App.Properties.setString('EnrollmentType','current');
+	var _view = require('windows/current/home');
+	bialik_app.updateTitle('Home');
+	mainWindow.add(_view.getView());
+});
+
 var footorImageView = Ti.UI.createImageView({
 	image:path+'images/logo-footer.png',
 	width:'80%',
 	top:'40dp'
 });
 
-//create event listeners
+//add viewss
+selectLocationContainerView.add(selectLocationLabel);
+selectLocationContainerView.add(viewmountBranchButtonContainer);
+selectLocationContainerView.add(benEdithBranchButtonContainer);
+
+welcomeAndSelectScrollView.add(mainLogoImageView);
+welcomeAndSelectScrollView.add(welcomeToBialik);
+welcomeAndSelectScrollView.add(selectLocationContainerView);
+welcomeAndSelectScrollView.add(footorImageView);
+
+exports.getView = function(){
+	return welcomeAndSelectScrollView;
+};
+
+//onclick change gradients
 viewmountBranchButtonContainer.addEventListener('touchstart', function(){
 	viewmountBranchButton.setBackgroundGradient({
 		type:'linear',
@@ -145,14 +177,8 @@ viewmountBranchButtonContainer.addEventListener('touchend', function(){
 	});
 });
 
-viewmountBranchButtonContainer.addEventListener('click', function(){
-	drawer.updateDrawer(prospectMenuList.getList());
-	//Titanium.App.Properties.setString('EnrollmentType','prospective');
-	var _view = require('windows/prospect/home');
-	bialik_app.updateTitle('Home');
-	bialik_app.addDrawerButton();
-	mainWindow.add(_view.getView());
-});
+//
+
 
 benEdithBranchButtonContainer.addEventListener('touchstart', function(){
 	benEdithBranchButtonContainer.setBackgroundGradient({
@@ -175,26 +201,3 @@ benEdithBranchButtonContainer.addEventListener('touchend', function(){
 		],
 	});
 });
-
-benEdithBranchButtonContainer.addEventListener('click', function(){
-	drawer.updateDrawer(currentMenuList.getList());
-	//Titanium.App.Properties.setString('EnrollmentType','current');
-	var _view = require('windows/current/home');
-	bialik_app.updateTitle('Home');
-	mainWindow.add(_view.getView());
-});
-
-
-//add viewss
-selectLocationContainerView.add(selectLocationLabel);
-selectLocationContainerView.add(viewmountBranchButtonContainer);
-selectLocationContainerView.add(benEdithBranchButtonContainer);
-
-welcomeAndSelectScrollView.add(mainLogoImageView);
-welcomeAndSelectScrollView.add(welcomeToBialik);
-welcomeAndSelectScrollView.add(selectLocationContainerView);
-welcomeAndSelectScrollView.add(footorImageView);
-
-exports.getView = function(){
-	return welcomeAndSelectScrollView;
-};

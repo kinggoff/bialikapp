@@ -15,7 +15,7 @@ var welcomeToBialik = Ti.UI.createLabel({
 	text:'Welcome to the Bialik Hebrew Day School App. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec massa odio. Etiam adipiscing erat libero, nec eleifend nisl laoreet vitae. Quisque iaculis pellentesque pretium.',
 	color:defaultBlueColor,
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:12
 	},
 	top:'15dp',
@@ -36,7 +36,7 @@ var selectEnrollmentTypeLabel = Ti.UI.createLabel({
 	text:'Select Enrollment Type',
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -74,7 +74,7 @@ selectProspectParent.add(Ti.UI.createImageView({
 selectProspectParent.add(Ti.UI.createLabel({
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -116,7 +116,7 @@ selectCurrentParent.add(Ti.UI.createImageView({
 selectCurrentParent.add(Ti.UI.createLabel({
 	font:{
 		fontSize:20,
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold'
 	},
 	color:defaultBlueColor,
@@ -125,12 +125,6 @@ selectCurrentParent.add(Ti.UI.createLabel({
 }));
 selectCurrentParentButtonContainer.add(selectCurrentParent);
 //Current Button end
-
-var footorImageView = Ti.UI.createImageView({
-	image:path+'images/logo-footer.png',
-	width:'80%',
-	top:'40dp'
-});
 
 //create event listeners
 selectProspectParentButtonContainer.addEventListener('click', function(){
@@ -146,6 +140,11 @@ selectCurrentParentButtonContainer.addEventListener('click', function(){
 	mainWindow.add(_view.getView());
 });
 
+var footorImageView = Ti.UI.createImageView({
+	image:path+'images/logo-footer.png',
+	width:'80%',
+	top:'40dp'
+});
 
 //add viewss
 selectEnrollmentTypeContainerView.add(selectEnrollmentTypeLabel);

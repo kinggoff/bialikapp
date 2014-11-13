@@ -15,7 +15,7 @@ var headingLabel = Ti.UI.createLabel({
 	text:'Prospective Parents:\nViewmount Branch',
 	color:'#03309b',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:24
 	},
@@ -48,7 +48,7 @@ var welcomeToOurSchoolContent = "Welcome to Bialik Hebrew Day School from our Ad
 var welcomeToOurSchoolLabel = Ti.UI.createLabel({
 	top:'20'+unit,
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:14
 	},
 	color:'#204eab',

@@ -11,6 +11,7 @@ var platformWidth = Ti.Platform.displayCaps.platformWidth;
 var currentWindow;
 var menuToggle = true;
 var defaultBlueColor = '#0046ac';
+var helveticafont = 'Helvetica Neue';
 
 var mainWindow = Ti.UI.createWindow({
 	backgroundColor:'#000'

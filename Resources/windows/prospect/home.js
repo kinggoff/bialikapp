@@ -15,7 +15,7 @@ var welcomeToOurSchoolLabel = Ti.UI.createLabel({
 	text:'Welcome To Our School',
 	color:defaultBlueColor,
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -31,7 +31,7 @@ var schoolImageView1 = Ti.UI.createImageView({
 var dearParentsLabel = Ti.UI.createLabel({
 	top:'20dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:14
 	},
 	color:'#204eab',

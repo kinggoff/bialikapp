@@ -27,7 +27,7 @@ var mainWindowHeaderView = Ti.UI.createView({
 var mainWindowHeaderLabel = Ti.UI.createLabel({
 	text:'Welcome and Setup',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:16
 	},
@@ -98,7 +98,8 @@ backButton.add(Ti.UI.createButton({
 		title:'Back',
 		color:'#fff',
 		font:{
-			fontSize:10
+			fontSize:10,
+			fontFamily:helveticafont
 		}
 	})
 );
@@ -130,10 +131,12 @@ exports.init = function(){
 	switch(Titanium.App.Properties.getString('EnrollmentType')){
 		case 'prospective': mainWindow.add(prospect_home.getView());
 							drawer.updateDrawer(prospectMenuList.getList());
+							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		case 'current': 	mainWindow.add(current_home.getView());
 							drawer.updateDrawer(currentMenuList.getList());
+							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		default:			mainWindow.add(welcomeandsetup.getView());

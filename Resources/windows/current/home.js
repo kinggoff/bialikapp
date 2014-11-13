@@ -15,7 +15,7 @@ var welcomeToOurSchoolLabel = Ti.UI.createLabel({
 	text:'Welcome to Bialik Hebrew Day School',
 	color:defaultBlueColor,
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontWeight:'bold',
 		fontSize:15
 	},
@@ -26,7 +26,7 @@ var welcomeToOurSchoolLabel = Ti.UI.createLabel({
 var welcomeToOurSchoolLabel2 = Ti.UI.createLabel({
 	top:'10dp',
 	font:{
-		fontFamily:'Arial',
+		fontFamily:helveticafont,
 		fontSize:13
 	},
 	color:defaultBlueColor,
