@@ -22,7 +22,7 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 	},
 	top:'25dp',
 	text:'Configure Your Experience',
-	left:'40dp'
+	left:'30dp'
 }));
 
 configureYourExperienceContainer.add(Ti.UI.createLabel({
@@ -36,7 +36,7 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 	top:'15dp',
 	text:'Please configure your app experience by selecting options from the list of settings below',
 	bottom:'15dp',
-	left:'40dp'
+	left:'30dp'
 }));
 
 prospectSettingsScrollView.add(configureYourExperienceContainer);

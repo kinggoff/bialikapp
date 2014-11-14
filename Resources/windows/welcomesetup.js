@@ -166,11 +166,13 @@ selectProspectParentButtonContainer.addEventListener('touchstart', function(){
 	selectProspectParentButtonContainer.setBackgroundGradient({
 		type:'linear',
 		colors:[
-			{color:'#fff',offset:1.00},
-			{color:'#d9f1fc',offset:0.10},
-			{color:'#fff',offset:0.00}
+			{color:'#a2a4a8',offset:1.00},
+			{color:'#829ba8',offset:0.10},
+			{color:'#a2a4a8',offset:0.00}
 		],
 	});
+	selectProspectParentButtonContainer.setBorderColor('#40434a');
+	selectProspectParentButtonContainer.setBorderWidth(3);
 });
 
 selectProspectParentButtonContainer.addEventListener('touchend', function(){
@@ -182,6 +184,8 @@ selectProspectParentButtonContainer.addEventListener('touchend', function(){
 			{color:'#fff',offset:1.00}
 		],
 	});
+	selectProspectParentButtonContainer.setBorderColor('#ccc');
+	selectProspectParentButtonContainer.setBorderWidth(1);
 });
 
 //
@@ -190,11 +194,13 @@ selectCurrentParentButtonContainer.addEventListener('touchstart', function(){
 	selectCurrentParentButtonContainer.setBackgroundGradient({
 		type:'linear',
 		colors:[
-			{color:'#fff',offset:1.00},
-			{color:'#d9f1fc',offset:0.10},
-			{color:'#fff',offset:0.00}
+			{color:'#a2a4a8',offset:1.00},
+			{color:'#829ba8',offset:0.10},
+			{color:'#a2a4a8',offset:0.00}
 		],
 	});
+	selectCurrentParentButtonContainer.setBorderColor('#40434a');
+	selectCurrentParentButtonContainer.setBorderWidth(3);
 });
 
 selectCurrentParentButtonContainer.addEventListener('touchend', function(){
@@ -206,6 +212,8 @@ selectCurrentParentButtonContainer.addEventListener('touchend', function(){
 			{color:'#fff',offset:1.00}
 		],
 	});
+	selectCurrentParentButtonContainer.setBorderColor('#ccc');
+	selectCurrentParentButtonContainer.setBorderWidth(1);
 });
 
 //onclick change gradients end

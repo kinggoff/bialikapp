@@ -104,24 +104,28 @@ backButton.add(Ti.UI.createButton({
 	})
 );
 
-/*
+
 var tempToggle = true;
 var tempText = Ti.UI.createButton({
 	title:'sac',
-	right:10
+	right:10,
+	color:'#fff',
+	width:Ti.UI.SIZE
 });
 tempText.addEventListener('click',function(){
 	if(tempToggle){
-		drawer.updateDrawer(prospectMenuList.getList());
+		Titanium.App.Properties.setString('EnrollmentType',null);
+		tempText.setTitle('null');
 		tempToggle = false;
 	}else{
-		drawer.updateDrawer(currentMenuList.getList());
+		Titanium.App.Properties.setString('EnrollmentType','prospective');
+		tempText.setTitle('prospective');
 		tempToggle = true;
 	}
 });
 
 mainWindowHeaderView.add(tempText);
-*/
+
 //mainWindowHeaderView.add(drawerButton);
 mainWindowHeaderView.add(mainWindowHeaderLabel);
 mainWindow.add(mainWindowHeaderView);

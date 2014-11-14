@@ -94,7 +94,7 @@ for (var i=0; i<prospectConfig.length; i++){
 		color:'#fff',
 		font:{
 			fontFamily:helveticafont, 
-			fontSize:20
+			fontSize:18
 		},
 		text:item.name,
 		left:40,

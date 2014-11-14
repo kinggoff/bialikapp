@@ -156,18 +156,20 @@ exports.getView = function(){
 
 //onclick change gradients
 viewmountBranchButtonContainer.addEventListener('touchstart', function(){
-	viewmountBranchButton.setBackgroundGradient({
+	viewmountBranchButtonContainer.setBackgroundGradient({
 		type:'linear',
 		colors:[
-			{color:'#fff',offset:1.00},
-			{color:'#d9f1fc',offset:0.10},
-			{color:'#fff',offset:0.00}
+			{color:'#a2a4a8',offset:1.00},
+			{color:'#829ba8',offset:0.10},
+			{color:'#a2a4a8',offset:0.00}
 		],
 	});
+	viewmountBranchButtonContainer.setBorderColor('#40434a');
+	viewmountBranchButtonContainer.setBorderWidth(3);
 });
 
 viewmountBranchButtonContainer.addEventListener('touchend', function(){
-	viewmountBranchButton.setBackgroundGradient({
+	viewmountBranchButtonContainer.setBackgroundGradient({
 		type:'linear',
 		colors:[
 			{color:'#fff',offset:0.00},
@@ -175,20 +177,23 @@ viewmountBranchButtonContainer.addEventListener('touchend', function(){
 			{color:'#fff',offset:1.00}
 		],
 	});
+	viewmountBranchButtonContainer.setBorderColor('#ccc');
+	viewmountBranchButtonContainer.setBorderWidth(1);
 });
 
 //
-
 
 benEdithBranchButtonContainer.addEventListener('touchstart', function(){
 	benEdithBranchButtonContainer.setBackgroundGradient({
 		type:'linear',
 		colors:[
-			{color:'#fff',offset:1.00},
-			{color:'#d9f1fc',offset:0.10},
-			{color:'#fff',offset:0.00}
+			{color:'#a2a4a8',offset:1.00},
+			{color:'#829ba8',offset:0.10},
+			{color:'#a2a4a8',offset:0.00}
 		],
 	});
+	benEdithBranchButtonContainer.setBorderColor('#40434a');
+	benEdithBranchButtonContainer.setBorderWidth(3);
 });
 
 benEdithBranchButtonContainer.addEventListener('touchend', function(){
@@ -200,4 +205,6 @@ benEdithBranchButtonContainer.addEventListener('touchend', function(){
 			{color:'#fff',offset:1.00}
 		],
 	});
+	benEdithBranchButtonContainer.setBorderColor('#ccc');
+	benEdithBranchButtonContainer.setBorderWidth(1);
 });
