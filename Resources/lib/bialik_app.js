@@ -119,6 +119,7 @@ tempText.addEventListener('click',function(){
 		tempToggle = false;
 	}else{
 		Titanium.App.Properties.setString('EnrollmentType','prospective');
+		drawer.updateDrawer(prospectMenuList.getList());
 		tempText.setTitle('prospective');
 		tempToggle = true;
 	}
@@ -162,7 +163,7 @@ exports.addDrawerButton = function(){
 
 exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 	if(mainWindowHeaderView.children[1]){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[1]);
+		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
 	}
 	mainWindowHeaderView.add(backButton);
 	backButton.addEventListener('click', function(){
@@ -177,3 +178,4 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 		}
 	});
 };
+
