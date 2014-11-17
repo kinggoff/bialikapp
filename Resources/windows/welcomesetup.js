@@ -130,14 +130,22 @@ selectCurrentParentButtonContainer.add(selectCurrentParent);
 selectProspectParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/welcomeselectbranch');
 	bialik_app.updateTitle('Welcome and Setup');
+	if(mainWindow.children.length > 2){
+		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	}
 	mainWindow.add(_view.getView());
 	bialik_app.addBackButton('windows/welcomesetup');
+	_view = null;
 });
 
 selectCurrentParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/home');
 	bialik_app.updateTitle('Home');
+	if(mainWindow.children.length > 2){
+		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	}
 	mainWindow.add(_view.getView());
+	_view = null;
 });
 
 var footorImageView = Ti.UI.createImageView({

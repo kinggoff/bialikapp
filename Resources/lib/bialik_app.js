@@ -74,37 +74,6 @@ drawerButton.addEventListener('click',function(){
 	}
 });
 
-var backButton = Ti.UI.createView({
-	backgroundGradient: {
-		type:'linear',
-		colors:[
-			{color:'#0cd7fd',offset:0.00},
-			{color:'#00aff8',offset:0.50},
-			{color:'#0095f4',offset:0.51},
-			{color:'#007fd1',offset:1.00}
-		],
-	},
-	height:'30dp',
-	width:'50dp',
-	left:'5dp',
-	borderColor:'#002162',
-	borderRadius:5,
-	borderWidth:.5
-});
-
-backButton.add(Ti.UI.createButton({
-		height:'20dp',
-		width:'25dp',
-		title:'Back',
-		color:'#fff',
-		font:{
-			fontSize:10,
-			fontFamily:helveticafont
-		}
-	})
-);
-
-
 var tempToggle = true;
 var tempText = Ti.UI.createButton({
 	title:'sac',
@@ -127,7 +96,7 @@ tempText.addEventListener('click',function(){
 
 mainWindowHeaderView.add(tempText);
 
-//mainWindowHeaderView.add(drawerButton);
+
 mainWindowHeaderView.add(mainWindowHeaderLabel);
 mainWindow.add(mainWindowHeaderView);
 mainWindow.add(drawer.getDrawer());
@@ -149,23 +118,48 @@ exports.init = function(){
 	mainWindow.open();
 };
 
-
-exports.updateTitle = function(title){
-	mainWindowHeaderLabel.setText(title);
+exports.updateTitle = function(text){
+	mainWindowHeaderLabel.setText(text);
 };
 
 exports.addDrawerButton = function(){
-	if(mainWindowHeaderView.children[1]){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[1]);
+	if(mainWindowHeaderView.children.length > 1){
+		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
 	}
 	mainWindowHeaderView.add(drawerButton);
 };
 
 exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
-	if(mainWindowHeaderView.children[1]){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
-	}
-	mainWindowHeaderView.add(backButton);
+	var backButton = Ti.UI.createView({
+		backgroundGradient: {
+			type:'linear',
+			colors:[
+				{color:'#0cd7fd',offset:0.00},
+				{color:'#00aff8',offset:0.50},
+				{color:'#0095f4',offset:0.51},
+				{color:'#007fd1',offset:1.00}
+			],
+		},
+		height:'30dp',
+		width:'50dp',
+		left:'5dp',
+		borderColor:'#002162',
+		borderRadius:5,
+		borderWidth:.5
+	});
+	
+	backButton.add(Ti.UI.createButton({
+			height:'20dp',
+			width:'25dp',
+			title:'Back',
+			color:'#fff',
+			font:{
+				fontSize:10,
+				fontFamily:helveticafont
+			}
+		})
+	);
+	
 	backButton.addEventListener('click', function(){
 		var _view = require(viewToGoBack);
 		if(mainWindow.children.length > 2){
@@ -176,6 +170,10 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 		if(addDrawerAfterBackPress){
 			mainWindowHeaderView.add(drawerButton);
 		}
+		backButton = null;
+		_view = null;
 	});
+	
+	mainWindowHeaderView.add(backButton);
 };
 

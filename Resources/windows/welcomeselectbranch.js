@@ -124,14 +124,16 @@ viewmountBranchButtonContainer.addEventListener('click', function(){
 	bialik_app.updateTitle('Home');
 	bialik_app.addDrawerButton();
 	mainWindow.add(_view.getView());
+	_view = null;
 });
 
 benEdithBranchButtonContainer.addEventListener('click', function(){
 	drawer.updateDrawer(currentMenuList.getList());
-	//Titanium.App.Properties.setString('EnrollmentType','current');
+	Titanium.App.Properties.setString('EnrollmentType','current');
 	var _view = require('windows/current/home');
 	bialik_app.updateTitle('Home');
 	mainWindow.add(_view.getView());
+	_view = null;
 });
 
 var footorImageView = Ti.UI.createImageView({
