@@ -40,7 +40,7 @@ var mainWindowHeaderLabel = Ti.UI.createLabel({
 });
 
 var drawerButton = Ti.UI.createView({
-	backgroundGradient: {
+	backgroundGradient:{
 		type:'linear',
 		colors:[
 			{color:'#0cd7fd',offset:0.00},
@@ -77,9 +77,9 @@ drawerButton.addEventListener('click',function(){
 var tempToggle = true;
 var tempText = Ti.UI.createButton({
 	title:'sac',
-	right:10,
+	right:'10dp',
 	color:'#fff',
-	width:Ti.UI.SIZE
+	width:'100dp'
 });
 tempText.addEventListener('click',function(){
 	if(tempToggle){
@@ -87,14 +87,14 @@ tempText.addEventListener('click',function(){
 		tempText.setTitle('null');
 		tempToggle = false;
 	}else{
-		Titanium.App.Properties.setString('EnrollmentType','prospective');
+		Titanium.App.Properties.setString('EnrollmentType','current');
 		drawer.updateDrawer(prospectMenuList.getList());
-		tempText.setTitle('prospective');
+		tempText.setTitle('current');
 		tempToggle = true;
 	}
 });
 
-mainWindowHeaderView.add(tempText);
+mainWindowHeaderView.add(tempText); //this will cause issue w/ the back button and will make the header title disapper
 
 
 mainWindowHeaderView.add(mainWindowHeaderLabel);
@@ -130,35 +130,18 @@ exports.addDrawerButton = function(){
 };
 
 exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
-	var backButton = Ti.UI.createView({
-		backgroundGradient: {
-			type:'linear',
-			colors:[
-				{color:'#0cd7fd',offset:0.00},
-				{color:'#00aff8',offset:0.50},
-				{color:'#0095f4',offset:0.51},
-				{color:'#007fd1',offset:1.00}
-			],
-		},
+	var backButton = Ti.UI.createButton({
+		title:'  Back',
+		backgroundImage:path+'images/back-btn-bg.png',
 		height:'30dp',
 		width:'50dp',
 		left:'5dp',
-		borderColor:'#002162',
-		borderRadius:5,
-		borderWidth:.5
+		font:{
+			fontSize:12,
+			fontFamily:helveticafont,
+			fontWeight:'Bold'
+		},
 	});
-	
-	backButton.add(Ti.UI.createButton({
-			height:'20dp',
-			width:'25dp',
-			title:'Back',
-			color:'#fff',
-			font:{
-				fontSize:10,
-				fontFamily:helveticafont
-			}
-		})
-	);
 	
 	backButton.addEventListener('click', function(){
 		var _view = require(viewToGoBack);
@@ -173,6 +156,10 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 		backButton = null;
 		_view = null;
 	});
+	
+	if(mainWindowHeaderView.children.length > 1){
+		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
+	}
 	
 	mainWindowHeaderView.add(backButton);
 };

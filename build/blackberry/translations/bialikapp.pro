@@ -1,0 +1,1 @@
+include (../bialikapp.pro)

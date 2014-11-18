@@ -35,27 +35,32 @@ var currentConfig = [
 		win:''
 	},
 	{
-		name:'Welcome to Our School',
+		name:'Safe Arrival',
 		icon:path+'images/icons/welcome.png',
-		win:'welcometoourschool'
+		win:'safearrival'
 	},
 	{
-		name:'School Life',
+		name:'News Letter',
 		icon:path+'images/icons/school-life.png',
-		win:'schoollife'
+		win:'newsletter'
 	},
 	{
-		name:'Application & Info',
+		name:'Calendar',
 		icon:path+'images/icons/application-info.png',
-		win:'appandinfo'
+		win:'calendar'
 	},
 	{
-		name:'Book Recommendations',
+		name:'School Forms',
 		icon:path+'images/icons/book-recommendations.png',
-		win:'bookrecommendations'
+		win:'schoolforms'
 	},
 	{
-		name:'Facebook',
+		name:'PTA Info',
+		icon:path+'images/icons/facebook.png',
+		win:'pta'
+	},
+	{
+		name:'Facebbok',
 		icon:path+'images/icons/facebook.png',
 		win:''
 	},
@@ -116,10 +121,17 @@ var currentTableView = Ti.UI.createTableView({
 
 currentTableView.addEventListener('click',function(e){
 	var index = e.index;
-	if(index == 5){
+	if(index == 6){
 		Titanium.Platform.openURL('http://www.facebook.com/bialik');
 	}else{
-		var winToOpen = require('windows/prospect/'+prospectConfig[index].win);
+		var _view = require('windows/current/'+currentConfig[index].win);
+		if(mainWindow.children.length > 2){
+			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+		}
+		bialik_app.updateTitle(currentConfig[index].name);
+		mainWindow.add(_view.getView());
+		drawer.hideDrawer();
+		menuToggle = true;
 	}
 });
 

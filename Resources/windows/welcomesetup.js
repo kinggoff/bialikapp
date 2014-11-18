@@ -139,7 +139,7 @@ selectProspectParentButtonContainer.addEventListener('click', function(){
 });
 
 selectCurrentParentButtonContainer.addEventListener('click', function(){
-	var _view = require('windows/current/home');
+	var _view = require('windows/current/requestpassword');
 	bialik_app.updateTitle('Home');
 	if(mainWindow.children.length > 2){
 		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
