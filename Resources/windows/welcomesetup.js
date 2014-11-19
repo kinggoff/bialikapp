@@ -1,4 +1,5 @@
 var welcomeAndSetupScrollView = Ti.UI.createScrollView({
+	id:'welcomeAndSetupScrollView',
 	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp',
@@ -129,23 +130,32 @@ selectCurrentParentButtonContainer.add(selectCurrentParent);
 //create event listeners
 selectProspectParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/welcomeselectbranch');
+	
+	bialik_app.setCurrentView(welcomeAndSetupScrollView);
 	bialik_app.updateTitle('Welcome and Setup');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-	}
-	mainWindow.add(_view.getView());
-	bialik_app.addBackButton('windows/welcomesetup');
-	_view = null;
+	
+	mainWindow.remove(bialik_app.getCurrentView());
+	mainWindow.add(_view.getView()); //param view to add
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView()); //require('windows/welcomeselectbranch');
+	
+	bialik_app.addBackButton(_view.getView()); //param view to remove when back button is pressed
 });
 
 selectCurrentParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/requestpassword');
-	bialik_app.updateTitle('Home');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-	}
-	mainWindow.add(_view.getView());
-	_view = null;
+	
+	bialik_app.setCurrentView(welcomeAndSetupScrollView);
+	bialik_app.updateTitle('Welcome and Setup');
+	
+	mainWindow.remove(bialik_app.getCurrentView());
+	mainWindow.add(_view.getView()); //param view to add
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView()); //require('windows/welcomeselectbranch');
+	
+	bialik_app.addBackButton(_view.getView()); //param view to remove when back button is pressed
 });
 
 var footorImageView = Ti.UI.createImageView({

@@ -1,4 +1,5 @@
-var prospectHomeScrollView = Ti.UI.createScrollView({
+var currentHomeScrollView = Ti.UI.createScrollView({
+	id:'currentHomeScrollView',
 	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp',
@@ -46,12 +47,12 @@ var recipientOfSupportLabel = Ti.UI.createImageView({
 	width:'150dp'
 });
 
-prospectHomeScrollView.add(mainLogoImageView);
-prospectHomeScrollView.add(welcomeToOurSchoolLabel);
-prospectHomeScrollView.add(welcomeToOurSchoolLabel2);
-prospectHomeScrollView.add(schoolImageView1);
-prospectHomeScrollView.add(recipientOfSupportLabel);
+currentHomeScrollView.add(mainLogoImageView);
+currentHomeScrollView.add(welcomeToOurSchoolLabel);
+currentHomeScrollView.add(welcomeToOurSchoolLabel2);
+currentHomeScrollView.add(schoolImageView1);
+currentHomeScrollView.add(recipientOfSupportLabel);
 
 exports.getView = function(){
-	return prospectHomeScrollView;
+	return currentHomeScrollView;
 };

@@ -1,4 +1,5 @@
 var prospectHomeScrollView = Ti.UI.createScrollView({
+	id:'prospectHomeScrollView',
 	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp',

@@ -1,4 +1,5 @@
 var welcomeAndSelectScrollView = Ti.UI.createScrollView({
+	id:'welcomeAndSelectScrollView',
 	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp',
@@ -120,20 +121,33 @@ benEdithBranchButtonContainer.add(benEdithBranchButton);
 viewmountBranchButtonContainer.addEventListener('click', function(){
 	drawer.updateDrawer(prospectMenuList.getList());
 	Titanium.App.Properties.setString('EnrollmentType','prospective');
+	
 	var _view = require('windows/prospect/home');
+	
 	bialik_app.updateTitle('Home');
 	bialik_app.addDrawerButton();
+	
+	mainWindow.remove(bialik_app.getCurrentView());
 	mainWindow.add(_view.getView());
-	_view = null;
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView());
 });
 
 benEdithBranchButtonContainer.addEventListener('click', function(){
-	drawer.updateDrawer(currentMenuList.getList());
-	Titanium.App.Properties.setString('EnrollmentType','current');
+	drawer.updateDrawer(prospectMenuList.getList());
+	Titanium.App.Properties.setString('EnrollmentType','prospective');
+	
 	var _view = require('windows/current/home');
+	
 	bialik_app.updateTitle('Home');
+	bialik_app.addDrawerButton();
+	
+	mainWindow.remove(bialik_app.getCurrentView());
 	mainWindow.add(_view.getView());
-	_view = null;
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView());
 });
 
 var footorImageView = Ti.UI.createImageView({

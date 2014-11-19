@@ -1,6 +1,8 @@
 var prospect_home = require('windows/prospect/home');
 var current_home = require('windows/current/home'); //change this 
 var welcomeandsetup = require('windows/welcomesetup');
+var previousView;
+var currentView;
 
 var mainWindowHeaderView = Ti.UI.createView({
 	backgroundColor:'blue',
@@ -38,32 +40,38 @@ var mainWindowHeaderLabel = Ti.UI.createLabel({
 		y:0.5
 	}
 });
-
-var drawerButton = Ti.UI.createView({
-	backgroundGradient:{
-		type:'linear',
-		colors:[
-			{color:'#0cd7fd',offset:0.00},
-			{color:'#00aff8',offset:0.50},
-			{color:'#0095f4',offset:0.51},
-			{color:'#007fd1',offset:1.00}
-		],
-	},
-	height:'30dp',
-	width:'50dp',
-	left:'5dp',
-	borderColor:'#002162',
-	borderRadius:5,
-	borderWidth:.5
-});
-
-drawerButton.add(Ti.UI.createButton({
-		backgroundImage:path+'images/common/menu.png',
-		height:'20dp',
-		width:'25dp',
-	})
-);
-
+if(isIOS || isAndroid){
+	var drawerButton = Ti.UI.createView({
+		backgroundGradient:{
+			type:'linear',
+			colors:[
+				{color:'#0cd7fd',offset:0.00},
+				{color:'#00aff8',offset:0.50},
+				{color:'#0095f4',offset:0.51},
+				{color:'#007fd1',offset:1.00}
+			],
+		},
+		height:'30dp',
+		width:'50dp',
+		left:'5dp',
+		borderColor:'#002162',
+		borderRadius:5,
+		borderWidth:.5
+	});
+	
+	drawerButton.add(Ti.UI.createButton({
+			backgroundImage:path+'images/common/menu.png',
+			height:'20dp',
+			width:'25dp',
+		})
+	);
+}else if(isBB){
+	var drawerButton = Ti.UI.createButton({
+		title:'Menu',
+		left:'5dp',
+		width:'80dp'
+	});
+}
 drawerButton.addEventListener('click',function(){
 	if(menuToggle){
 		drawer.showDrawer();
@@ -87,9 +95,9 @@ tempText.addEventListener('click',function(){
 		tempText.setTitle('null');
 		tempToggle = false;
 	}else{
-		Titanium.App.Properties.setString('EnrollmentType','current');
+		Titanium.App.Properties.setString('EnrollmentType','prospective');
 		drawer.updateDrawer(prospectMenuList.getList());
-		tempText.setTitle('current');
+		tempText.setTitle('prospect');
 		tempToggle = true;
 	}
 });
@@ -104,16 +112,19 @@ mainWindow.add(drawer.getDrawer());
 exports.init = function(){
 	switch(Titanium.App.Properties.getString('EnrollmentType')){
 		case 'prospective': mainWindow.add(prospect_home.getView());
+							previousView = prospect_home.getView();
 							drawer.updateDrawer(prospectMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		case 'current': 	mainWindow.add(current_home.getView());
+							previousView = current_home.getView();
 							drawer.updateDrawer(currentMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		default:			mainWindow.add(welcomeandsetup.getView());
+							previousView = welcomeandsetup.getView();
 	}
 	mainWindow.open();
 };
@@ -122,14 +133,7 @@ exports.updateTitle = function(text){
 	mainWindowHeaderLabel.setText(text);
 };
 
-exports.addDrawerButton = function(){
-	if(mainWindowHeaderView.children.length > 1){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
-	}
-	mainWindowHeaderView.add(drawerButton);
-};
-
-exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
+exports.addBackButton = function(viewToRemove, addDrawerAfterBackPress){
 	var backButton = Ti.UI.createButton({
 		title:'  Back',
 		backgroundImage:path+'images/back-btn-bg.png',
@@ -144,23 +148,60 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 	});
 	
 	backButton.addEventListener('click', function(){
-		var _view = require(viewToGoBack);
-		if(mainWindow.children.length > 2){
-			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-		}
-		mainWindow.add(_view.getView());
+		mainWindow.remove(viewToRemove);
+		mainWindow.add(previousView);
+		
 		mainWindowHeaderView.remove(backButton);
 		if(addDrawerAfterBackPress){
 			mainWindowHeaderView.add(drawerButton);
+		}else{
+			mainWindowHeaderView.remove(drawerButton);
 		}
-		backButton = null;
-		_view = null;
 	});
-	
-	if(mainWindowHeaderView.children.length > 1){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
-	}
 	
 	mainWindowHeaderView.add(backButton);
 };
 
+exports.addDrawerButton = function(){
+	
+	var backButton = Ti.UI.createButton({
+		title:'  Back',
+		backgroundImage:path+'images/back-btn-bg.png',
+		height:'30dp',
+		width:'50dp',
+		left:'5dp',
+		font:{
+			fontSize:12,
+			fontFamily:helveticafont,
+			fontWeight:'Bold'
+		},
+	});
+	
+	backButton.addEventListener('click', function(){
+		mainWindow.remove(viewToRemove);
+		mainWindow.add(previousView);
+		
+		mainWindowHeaderView.remove(backButton);
+		if(addDrawerAfterBackPress){
+			mainWindowHeaderView.add(drawerButton);
+		}
+	});
+	
+	
+	mainWindowHeaderView.remove(backButton);
+	mainWindowHeaderView.add(drawerButton);
+};
+
+exports.setPreviousView = function(view){
+	previousView = null;
+	previousView = view;
+};
+
+exports.setCurrentView = function(view){
+	currentView = null;
+	currentView = view;
+};
+
+exports.getCurrentView = function(){
+	return currentView;
+};

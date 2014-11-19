@@ -103,15 +103,16 @@ signInButtonContainer.add(Ti.UI.createLabel({
 //create event listeners
 signInButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/home');
-	bialik_app.updateTitle('Home');
-	drawer.updateDrawer(currentMenuList.getList());
-	Titanium.App.Properties.setString('EnrollmentType','current');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-	}
+	
+	bialik_app.updateTitle('Welcome and Setup');
+	
+	mainWindow.remove(bialik_app.getCurrentView());
 	mainWindow.add(_view.getView());
-	bialik_app.addDrawerButton();
-	_view = null;
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView());
+	
+	//bialik_app.addBackButton(_view.getView()); //param = view to remove
 });
 
 var footorImageView = Ti.UI.createImageView({

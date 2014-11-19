@@ -14,8 +14,6 @@ var menuToggle = true;
 var defaultBlueColor = '#0046ac';
 var helveticafont = 'Helvetica Neue';
 
-
-
 var mainWindow = Ti.UI.createWindow();
 if(isIOS){
 	mainWindow.setBackgroundColor('#000');

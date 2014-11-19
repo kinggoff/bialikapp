@@ -90,13 +90,16 @@ requestPasswordButtonContainer.add(Ti.UI.createLabel({
 //create event listeners
 requestPasswordButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/signin');
+	
 	bialik_app.updateTitle('Welcome and Setup');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-	}
+	
+	mainWindow.remove(bialik_app.getCurrentView());
 	mainWindow.add(_view.getView());
-	bialik_app.addBackButton('windows/current/requestpassword');
-	_view = null;
+	
+	bialik_app.setPreviousView(bialik_app.getCurrentView());
+	bialik_app.setCurrentView(_view.getView());
+	
+	bialik_app.addBackButton(_view.getView()); //param = view to remove
 });
 
 var footorImageView = Ti.UI.createImageView({
