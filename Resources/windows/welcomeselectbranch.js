@@ -1,8 +1,7 @@
 var welcomeAndSelectScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var mainLogoImageView = Ti.UI.createImageView({
@@ -120,19 +119,38 @@ benEdithBranchButtonContainer.add(benEdithBranchButton);
 viewmountBranchButtonContainer.addEventListener('click', function(){
 	drawer.updateDrawer(prospectMenuList.getList());
 	Titanium.App.Properties.setString('EnrollmentType','prospective');
+	
 	var _view = require('windows/prospect/home');
 	bialik_app.updateTitle('Home');
 	bialik_app.addDrawerButton();
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
 	_view = null;
 });
 
 benEdithBranchButtonContainer.addEventListener('click', function(){
 	drawer.updateDrawer(currentMenuList.getList());
 	Titanium.App.Properties.setString('EnrollmentType','current');
-	var _view = require('windows/current/home');
+	
+	var _view = require('windows/prospect/home');
 	bialik_app.updateTitle('Home');
+	bialik_app.addDrawerButton();
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
 	_view = null;
 });
 

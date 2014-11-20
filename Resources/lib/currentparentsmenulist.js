@@ -124,12 +124,18 @@ currentTableView.addEventListener('click',function(e){
 	if(index == 6){
 		Titanium.Platform.openURL('http://www.facebook.com/bialik');
 	}else{
-		var _view = require('windows/current/'+currentConfig[index].win);
-		if(mainWindow.children.length > 2){
-			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-		}
 		bialik_app.updateTitle(currentConfig[index].name);
+		
+		var _view = require('windows/current/'+currentConfig[index].win);
+		
+		if(mainWindowMirror.length > 2){
+			mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+			mainWindowMirror.splice(-1);
+		}
+		
 		mainWindow.add(_view.getView());
+		mainWindowMirror.push(_view.getView());
+		
 		drawer.hideDrawer();
 		menuToggle = true;
 	}

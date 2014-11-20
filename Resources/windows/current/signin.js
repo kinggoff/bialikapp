@@ -1,8 +1,7 @@
 var signInScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var mainLogoImageView = Ti.UI.createImageView({
@@ -102,15 +101,21 @@ signInButtonContainer.add(Ti.UI.createLabel({
 
 //create event listeners
 signInButtonContainer.addEventListener('click', function(){
-	var _view = require('windows/current/home');
-	bialik_app.updateTitle('Home');
 	drawer.updateDrawer(currentMenuList.getList());
 	Titanium.App.Properties.setString('EnrollmentType','current');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-	}
-	mainWindow.add(_view.getView());
+	
+	var _view = require('windows/current/home');
+	bialik_app.updateTitle('Home');
 	bialik_app.addDrawerButton();
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
+	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
 	_view = null;
 });
 

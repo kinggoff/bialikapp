@@ -117,14 +117,20 @@ var tableView = Ti.UI.createTableView({
 tableView.addEventListener('click',function(e){
 	var index = e.index;
 	if(index == 5){
-		Titanium.Platform.openURL('http://www.facebook.com/bialik');
+		Titanium.Platform.openURL('http://www.facebook.com/');
 	}else{
-		var _view = require('windows/prospect/'+prospectConfig[index].win);
-		if(mainWindow.children.length > 2){
-			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
-		}
 		bialik_app.updateTitle(prospectConfig[index].name);
+		
+		var _view = require('windows/prospect/'+prospectConfig[index].win);
+		
+		if(mainWindowMirror.length > 2){
+			mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+			mainWindowMirror.splice(-1);
+		}
+		
 		mainWindow.add(_view.getView());
+		mainWindowMirror.push(_view.getView());
+		
 		drawer.hideDrawer();
 		menuToggle = true;
 	}

@@ -3,7 +3,7 @@ var current_home = require('windows/current/home'); //change this
 var welcomeandsetup = require('windows/welcomesetup');
 
 var mainWindowHeaderView = Ti.UI.createView({
-	backgroundColor:'blue',
+	backgroundColor:'#0079eb',
 	height:'40dp',
 	width:Ti.UI.FILL,
 	top:(isIOS) ? 22:0,
@@ -24,6 +24,7 @@ var mainWindowHeaderView = Ti.UI.createView({
 	zIndex:99
 });
 
+
 var mainWindowHeaderLabel = Ti.UI.createLabel({
 	text:'Welcome and Setup',
 	font:{
@@ -36,33 +37,43 @@ var mainWindowHeaderLabel = Ti.UI.createLabel({
 	shadowOffset:{
 		x:1.0,
 		y:0.5
-	}
-});
-
-var drawerButton = Ti.UI.createView({
-	backgroundGradient:{
-		type:'linear',
-		colors:[
-			{color:'#0cd7fd',offset:0.00},
-			{color:'#00aff8',offset:0.50},
-			{color:'#0095f4',offset:0.51},
-			{color:'#007fd1',offset:1.00}
-		],
 	},
-	height:'30dp',
-	width:'50dp',
-	left:'5dp',
-	borderColor:'#002162',
-	borderRadius:5,
-	borderWidth:.5
+	left:(isBB) ? '70dp':null
 });
 
-drawerButton.add(Ti.UI.createButton({
+if(isIOS || isAndroid){
+	var drawerButton = Ti.UI.createView({
+		backgroundGradient:{
+			type:'linear',
+			colors:[
+				{color:'#0cd7fd',offset:0.00},
+				{color:'#00aff8',offset:0.50},
+				{color:'#0095f4',offset:0.51},
+				{color:'#007fd1',offset:1.00}
+			],
+		},
+		height:'30dp',
+		width:'50dp',
+		left:'5dp',
+		borderColor:'#002162',
+		borderRadius:5,
+		borderWidth:.5
+	});
+	
+	drawerButton.add(Ti.UI.createButton({
+			backgroundImage:path+'images/common/menu.png',
+			height:'20dp',
+			width:'25dp',
+		})
+	);
+}else if(isBB){
+	var drawerButton = Ti.UI.createView({
 		backgroundImage:path+'images/common/menu.png',
-		height:'20dp',
-		width:'25dp',
-	})
-);
+		left:'5dp',
+		width:'40dp',
+		height:'30dp'
+	});
+}
 
 drawerButton.addEventListener('click',function(){
 	if(menuToggle){
@@ -101,21 +112,29 @@ mainWindowHeaderView.add(mainWindowHeaderLabel);
 mainWindow.add(mainWindowHeaderView);
 mainWindow.add(drawer.getDrawer());
 
+mainWindowHeaderViewMirror.push(mainWindowHeaderLabel);
+mainWindowMirror.push(mainWindowHeaderView);
+mainWindowMirror.push(drawer.getDrawer());
+
 exports.init = function(){
 	switch(Titanium.App.Properties.getString('EnrollmentType')){
 		case 'prospective': mainWindow.add(prospect_home.getView());
+							mainWindowMirror.push(prospect_home.getView());
 							drawer.updateDrawer(prospectMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		case 'current': 	mainWindow.add(current_home.getView());
+							mainWindowMirror.push(current_home.getView());
 							drawer.updateDrawer(currentMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
 		default:			mainWindow.add(welcomeandsetup.getView());
+							mainWindowMirror.push(welcomeandsetup.getView());
 	}
 	mainWindow.open();
+	setInterval(function(){console.log('mainWindowHeaderView: '+mainWindowHeaderView.zIndex);},2000);
 };
 
 exports.updateTitle = function(text){
@@ -123,10 +142,12 @@ exports.updateTitle = function(text){
 };
 
 exports.addDrawerButton = function(){
-	if(mainWindowHeaderView.children.length > 1){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
+	if(mainWindowHeaderViewMirror.length > 1){
+		mainWindowHeaderView.remove(mainWindowHeaderViewMirror[mainWindowHeaderViewMirror.length-1]);
+		mainWindowHeaderViewMirror.splice(-1);
 	}
 	mainWindowHeaderView.add(drawerButton);
+	mainWindowHeaderViewMirror.push(drawerButton);
 };
 
 exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
@@ -145,22 +166,30 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 	
 	backButton.addEventListener('click', function(){
 		var _view = require(viewToGoBack);
-		if(mainWindow.children.length > 2){
-			mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+		
+		if(mainWindowMirror.length > 2){
+			mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+			mainWindowMirror.splice(-1);
 		}
+		
 		mainWindow.add(_view.getView());
+		mainWindowMirror.push(_view.getView());
+		
 		mainWindowHeaderView.remove(backButton);
+		mainWindowHeaderViewMirror.splice(-1);
+		
 		if(addDrawerAfterBackPress){
 			mainWindowHeaderView.add(drawerButton);
+			mainWindowHeaderViewMirror.push(drawerButton);
 		}
-		backButton = null;
-		_view = null;
 	});
 	
-	if(mainWindowHeaderView.children.length > 1){
-		mainWindowHeaderView.remove(mainWindowHeaderView.children[mainWindowHeaderView.children.length-1]);
+	if(mainWindowHeaderViewMirror.length > 1){
+		mainWindowHeaderView.remove(mainWindowHeaderViewMirror[mainWindowHeaderViewMirror.length-1]);
+		mainWindowHeaderViewMirror.splice(-1);
 	}
 	
 	mainWindowHeaderView.add(backButton);
+	mainWindowHeaderViewMirror.push(backButton);
 };
 

@@ -1,8 +1,7 @@
 var grade1to5ScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 grade1to5ScrollView.add(Ti.UI.createLabel({

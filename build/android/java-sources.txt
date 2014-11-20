@@ -1,0 +1,8 @@
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/android/support/v7/appcompat/R.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/ApplicationStylesheet.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/AssetCryptImpl.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/BialikappActivity.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/BialikappAppInfo.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/BialikappApplication.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/com/bialik/app/R.java"
+"/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/build/android/gen/ti/modules/titanium/ui/R.java"

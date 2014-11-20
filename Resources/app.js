@@ -14,14 +14,12 @@ var menuToggle = true;
 var defaultBlueColor = '#0046ac';
 var helveticafont = 'Helvetica Neue';
 
+var mainWindowMirror = [];
+var mainWindowHeaderViewMirror = [];
 
-
-var mainWindow = Ti.UI.createWindow();
-if(isIOS){
-	mainWindow.setBackgroundColor('#000');
-}else if(isAndroid || isBB){
-	mainWindow.setBackgroundImage(path+'images/welcomeScreen/page-bg.jpg');
-}
+var mainWindow = Ti.UI.createWindow({
+	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+});
 
 var prospectMenuList = require('lib/prospectiveparentsmenulist');
 var currentMenuList = require('lib/currentparentsmenulist');

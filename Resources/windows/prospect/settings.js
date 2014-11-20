@@ -1,8 +1,7 @@
 var prospectSettingsScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 //configureYourExperienceContainer start
@@ -28,7 +27,7 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 configureYourExperienceContainer.add(Ti.UI.createLabel({
 	color:defaultBlueColor,
 	height:Ti.UI.SIZE,
-	width:Ti.UI.SIZE,
+	width:'90%',
 	font:{
 		fontSize:13,
 		fontFamily:helveticafont,
@@ -49,7 +48,7 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //push notification start
 var pushNotificationContainer = Ti.UI.createView({
-	height:'40dp',
+	height:(isBB) ? '55dp':'40dp',
 	width:Ti.UI.FILL
 });
 
@@ -87,7 +86,7 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //viewmountBranch start
 var viewmountBranchContainer = Ti.UI.createView({
-	height:'40dp',
+	height:(isBB) ? '55dp':'40dp',
 	width:Ti.UI.FILL
 });
 
@@ -129,7 +128,7 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //ben edith start
 var benEdithBranchContainer = Ti.UI.createView({
-	height:'80dp',
+	height:(isBB) ? '120dp':'80dp',
 	width:Ti.UI.FILL
 });
 
@@ -172,7 +171,7 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //prospect parent start
 var prospectParentContainer = Ti.UI.createView({
-	height:'40dp',
+	height:(isBB) ? '55dp':'40dp',
 	width:Ti.UI.FILL
 });
 
@@ -207,7 +206,7 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //current parent start
 var currentParentContainer = Ti.UI.createView({
-	height:'40dp',
+	height:(isBB) ? '55dp':'40dp',
 	width:Ti.UI.FILL
 });
 

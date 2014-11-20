@@ -1,8 +1,7 @@
 var requestPasswordScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var mainLogoImageView = Ti.UI.createImageView({
@@ -91,11 +90,15 @@ requestPasswordButtonContainer.add(Ti.UI.createLabel({
 requestPasswordButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/signin');
 	bialik_app.updateTitle('Welcome and Setup');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
+	
 	mainWindow.add(_view.getView());
-	bialik_app.addBackButton('windows/current/requestpassword');
+	mainWindowMirror.push(_view.getView());
+	
 	_view = null;
 });
 
@@ -116,6 +119,7 @@ requestPasswordScrollView.add(currentParentSignInContainerView);
 requestPasswordScrollView.add(footorImageView);
 
 exports.getView = function(){
+	bialik_app.addBackButton('windows/welcomesetup');
 	return requestPasswordScrollView;
 };
 

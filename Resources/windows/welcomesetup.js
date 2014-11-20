@@ -1,8 +1,7 @@
 var welcomeAndSetupScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var mainLogoImageView = Ti.UI.createImageView({
@@ -130,21 +129,34 @@ selectCurrentParentButtonContainer.add(selectCurrentParent);
 selectProspectParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/welcomeselectbranch');
 	bialik_app.updateTitle('Welcome and Setup');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
 	bialik_app.addBackButton('windows/welcomesetup');
+	
 	_view = null;
 });
 
 selectCurrentParentButtonContainer.addEventListener('click', function(){
 	var _view = require('windows/current/requestpassword');
-	bialik_app.updateTitle('Home');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	bialik_app.updateTitle('Welcome and Setup');
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/welcomesetup');
+	
 	_view = null;
 });
 

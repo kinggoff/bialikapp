@@ -1,13 +1,12 @@
 var prospectAppAndInfoScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
 });
 
 var row1 = Ti.UI.createView({
 	width:Ti.UI.FILL,
-	height:'100dp',
+	height:Ti.UI.SIZE,
 	top:'20dp',
 	layout:'horizontal'
 });
@@ -68,7 +67,7 @@ row1.add(brochureContainer);
 
 var row2 = Ti.UI.createView({
 	width:Ti.UI.FILL,
-	height:'100dp',
+	height:Ti.UI.SIZE,
 	top:'0dp',
 	layout:'horizontal'
 });
@@ -138,7 +137,7 @@ row2.add(kindergartenContainer);
 
 var row3 = Ti.UI.createView({
 	width:Ti.UI.FILL,
-	height:'100dp',
+	height:Ti.UI.SIZE,
 	top:'10dp',
 	layout:'horizontal'
 });

@@ -1,8 +1,12 @@
-var proespectSchoolLifeScrollView = Ti.UI.createScrollView({
+var proespectSchoolLifeScrollView = Ti.UI.createView({
 	layout:'vertical',
 	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp',
-	backgroundImage:path+'images/welcomeScreen/page-bg.jpg'
+	top:(isIOS) ? '62dp':'40dp'
+});
+
+SchoolLifeHeaderView = Ti.UI.createView({
+	top:(isIOS) ? '72dp':'50dp',
+	height:'100dp'
 });
 
 var SchoolLifeHeadingLabel = Ti.UI.createLabel({
@@ -13,10 +17,11 @@ var SchoolLifeHeadingLabel = Ti.UI.createLabel({
 		fontWeight:'bold',
 		fontSize:24
 	},
-	top:'25'+unit,
 	width:'90%',
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 });
+SchoolLifeHeaderView.add(SchoolLifeHeadingLabel);
+
 var videoListConfig = [
 	{
 		title:'Happy Chanukah from the Bialik Family 2013',
@@ -84,7 +89,7 @@ for (var i=0; i<videoListConfig.length; i++){
 	var row = Ti.UI.createTableViewRow({
 		className:'forumEvent',
 		rowIndex:i,
-		///height:'100dp'
+		height:(isBB) ? Ti.UI.SIZE:null
 	});
 	
 	var title = Ti.UI.createLabel({
@@ -94,18 +99,18 @@ for (var i=0; i<videoListConfig.length; i++){
 			fontSize:20
 		},
 		width:'55%',
-		left:15,
-		top:20,
+		left:'15dp',
+		top:'20dp',
 		color:'#03309b',
 	});
 	row.add(title);
 	
 	var thumb = Ti.UI.createImageView({
 		width:'30%',
-		height:80,
-		right:15,
-		top:20,
-		bottom:20,
+		height:'80dp',
+		right:'15dp',
+		top:'25dp',
+		bottom:'20dp',
 		backgroundColor:'red'
 	});
 	row.add(thumb);
@@ -114,14 +119,17 @@ for (var i=0; i<videoListConfig.length; i++){
 }
 
 var SchoolLifeTableView = Ti.UI.createTableView({
-	top:30,
+	top:(isIOS) ? '62dp':'40dp',
+	top:100,
+	zIndex:-1,
 	backgroundColor:'transparent',
 	data:SchoolLifeTableData,
 	separatorInsets:{
 		left:0
 	},
-	height:(100*(videoListConfig.length+((isIOS) ? 0:1)))+'dp',
-	minRowHeight:'100dp'
+	height:'500dp',
+	minRowHeight:'100dp',
+	headerView:SchoolLifeHeaderView
 });
 
 SchoolLifeTableView.addEventListener('click',function(e){
@@ -134,5 +142,6 @@ proespectSchoolLifeScrollView.add(SchoolLifeHeadingLabel);
 proespectSchoolLifeScrollView.add(SchoolLifeTableView);
 
 exports.getView = function(){
-	return proespectSchoolLifeScrollView;
+	setInterval(function(){console.log('SchoolLifeTableView: '+SchoolLifeTableView.zIndex);},2000);
+	return SchoolLifeTableView;
 };
