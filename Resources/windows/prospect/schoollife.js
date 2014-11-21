@@ -4,7 +4,7 @@ var proespectSchoolLifeScrollView = Ti.UI.createView({
 	top:(isIOS) ? '62dp':'40dp'
 });
 
-SchoolLifeHeaderView = Ti.UI.createView({
+var SchoolLifeHeaderView = Ti.UI.createView({
 	top:(isIOS) ? '72dp':'50dp',
 	height:'100dp'
 });
@@ -18,9 +18,9 @@ var SchoolLifeHeadingLabel = Ti.UI.createLabel({
 		fontSize:24
 	},
 	width:'90%',
-	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
+	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
+	zIndex:-1,
 });
-SchoolLifeHeaderView.add(SchoolLifeHeadingLabel);
 
 var videoListConfig = [
 	{
@@ -82,6 +82,7 @@ var videoListConfig = [
 ];
 
 var SchoolLifeTableData = [];
+//SchoolLifeTableData.push(SchoolLifeHeaderView);
 
 for (var i=0; i<videoListConfig.length; i++){
 	var item = videoListConfig[i];
@@ -89,7 +90,8 @@ for (var i=0; i<videoListConfig.length; i++){
 	var row = Ti.UI.createTableViewRow({
 		className:'forumEvent',
 		rowIndex:i,
-		height:(isBB) ? Ti.UI.SIZE:null
+		height:(isBB) ? Ti.UI.SIZE:null,
+		zIndex:-1,
 	});
 	
 	var title = Ti.UI.createLabel({
@@ -119,17 +121,24 @@ for (var i=0; i<videoListConfig.length; i++){
 }
 
 var SchoolLifeTableView = Ti.UI.createTableView({
+	/*
 	top:(isIOS) ? '62dp':'40dp',
-	top:100,
+	//top:'100dp',
 	zIndex:-1,
 	backgroundColor:'transparent',
 	data:SchoolLifeTableData,
 	separatorInsets:{
 		left:0
 	},
-	height:'500dp',
-	minRowHeight:'100dp',
-	headerView:SchoolLifeHeaderView
+	//height:'100dp',
+	minRowHeight:'100dp'
+	*/
+	top:(isIOS) ? '62dp':'40dp',
+	left: 0,
+	zIndex:0,
+	width: String(platformWidth+unit),
+	height: String(platformHeight+unit),
+	data:SchoolLifeTableData,
 });
 
 SchoolLifeTableView.addEventListener('click',function(e){
@@ -142,6 +151,5 @@ proespectSchoolLifeScrollView.add(SchoolLifeHeadingLabel);
 proespectSchoolLifeScrollView.add(SchoolLifeTableView);
 
 exports.getView = function(){
-	setInterval(function(){console.log('SchoolLifeTableView: '+SchoolLifeTableView.zIndex);},2000);
 	return SchoolLifeTableView;
 };

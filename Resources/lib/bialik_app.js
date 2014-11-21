@@ -134,7 +134,6 @@ exports.init = function(){
 							mainWindowMirror.push(welcomeandsetup.getView());
 	}
 	mainWindow.open();
-	setInterval(function(){console.log('mainWindowHeaderView: '+mainWindowHeaderView.zIndex);},2000);
 };
 
 exports.updateTitle = function(text){

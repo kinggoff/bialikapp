@@ -27,3 +27,6 @@ var drawer = require('lib/drawer');
 var bialik_app = require('lib/bialik_app');
 
 bialik_app.init();
+
+console.log(platformHeight);
+console.log(platformWidth);
