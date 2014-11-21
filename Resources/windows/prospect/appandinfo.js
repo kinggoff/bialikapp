@@ -126,11 +126,18 @@ kindergartenContainer.add(Ti.UI.createLabel({
 
 kindergartenContainer.addEventListener('click', function(){
 	var _view = require('windows/prospect/aplicationAndInfoViews/kindergarten');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
-	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
+	_view = null;
 });
 
 row2.add(kindergartenContainer);
@@ -169,11 +176,18 @@ grade1to5Container.add(Ti.UI.createLabel({
 
 grade1to5Container.addEventListener('click', function(){
 	var _view = require('windows/prospect/aplicationAndInfoViews/grade1to5');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
-	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
+	_view = null;
 });
 
 row3.add(grade1to5Container);
@@ -205,11 +219,18 @@ grade6to8Container.add(Ti.UI.createLabel({
 
 grade6to8Container.addEventListener('click', function(){
 	var _view = require('windows/prospect/aplicationAndInfoViews/grade6to8');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
-	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
+	_view = null;
 });
 
 row3.add(grade6to8Container);
@@ -246,11 +267,18 @@ feesContainer.add(Ti.UI.createLabel({
 
 feesContainer.addEventListener('click', function(){
 	var _view = require('windows/prospect/aplicationAndInfoViews/fees');
-	if(mainWindow.children.length > 2){
-		mainWindow.remove(mainWindow.children[mainWindow.children.length-1]);
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
 	}
-	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
 	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/prospect/appandinfo', true);
+	
+	_view = null;
 });
 
 row4.add(feesContainer);

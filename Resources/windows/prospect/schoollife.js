@@ -19,7 +19,7 @@ var SchoolLifeHeadingLabel = Ti.UI.createLabel({
 	},
 	width:'90%',
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
-	zIndex:-1,
+	zIndex:0,
 });
 
 var videoListConfig = [
@@ -91,7 +91,7 @@ for (var i=0; i<videoListConfig.length; i++){
 		className:'forumEvent',
 		rowIndex:i,
 		height:(isBB) ? Ti.UI.SIZE:null,
-		zIndex:-1,
+		zIndex:0,
 	});
 	
 	var title = Ti.UI.createLabel({
@@ -121,18 +121,6 @@ for (var i=0; i<videoListConfig.length; i++){
 }
 
 var SchoolLifeTableView = Ti.UI.createTableView({
-	/*
-	top:(isIOS) ? '62dp':'40dp',
-	//top:'100dp',
-	zIndex:-1,
-	backgroundColor:'transparent',
-	data:SchoolLifeTableData,
-	separatorInsets:{
-		left:0
-	},
-	//height:'100dp',
-	minRowHeight:'100dp'
-	*/
 	top:(isIOS) ? '62dp':'40dp',
 	left: 0,
 	zIndex:0,

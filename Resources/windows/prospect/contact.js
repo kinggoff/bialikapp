@@ -111,13 +111,16 @@ viewmountInfoContainer.add(Ti.UI.createLabel({
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 }));
 
-viewmountInfoContainer.children[5].add(Ti.UI.createView({
-	height:'1dp',
-	width:'82dp',
-	left:'33dp',
-	bottom:0,
-	backgroundColor:defaultBlueColor
-}));
+if(!isBB){
+	viewmountInfoContainer.children[5].add(Ti.UI.createView({
+		height:'1dp',
+		width:'82dp',
+		left:'33dp',
+		bottom:0,
+		backgroundColor:defaultBlueColor
+	}));
+}
+
 
 //info container for ben edith branch
 var benEdithInfoContainer = Ti.UI.createView({
@@ -194,14 +197,16 @@ benEdithInfoContainer.add(Ti.UI.createLabel({
 	left:'10dp',
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 }));
+if(!isBB){
+	benEdithInfoContainer.children[5].add(Ti.UI.createView({
+		height:'1dp',
+		width:'82dp',
+		left:'33dp',
+		bottom:0,
+		backgroundColor:defaultBlueColor
+	}));
+}
 
-benEdithInfoContainer.children[5].add(Ti.UI.createView({
-	height:'1dp',
-	width:'82dp',
-	left:'33dp',
-	bottom:0,
-	backgroundColor:defaultBlueColor
-}));
 
 //add them views
 viewmountContainer.add(viewmountImage);
@@ -215,7 +220,7 @@ prospectContactScrollView.add(benEdithContainer);
 
 //add people info
 var peopleInfoContainer = Ti.UI.createView({
-	height:'140dp',
+	height:(isBB) ? '160dp':'140dp',
 	width:Ti.UI.FILL,
 	top:'15dp'
 });
@@ -241,7 +246,7 @@ peopleInfoContainer.add(Ti.UI.createView({
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL,
 	zIndex:2,
-	top:70
+	top:(isBB) ? 80:70
 }));
 
 peopleInfoContainer.add(Ti.UI.createView({
@@ -256,7 +261,7 @@ var waltmanContainer = Ti.UI.createView({
 	layout:'vertical',
 	height:Ti.UI.SIZE,
 	width:Ti.UI.SIZE,
-	top:'10dp',
+	top:(isBB) ? '5dp':'10dp',
 	left:'15dp'
 });
 
@@ -284,7 +289,7 @@ waltmanContainer.add(Ti.UI.createLabel({
 }));
 
 waltmanContainer.add(Ti.UI.createLabel({
-	text:'dwaltman@bialik.ca\t     416-783-3346 ext. 285',
+	text:'dwaltman@bialik.ca (416-783-3346 ext. 285)',
 	font:{
 		fontSize:13,
 		fontFamily:helveticafont,
@@ -294,19 +299,21 @@ waltmanContainer.add(Ti.UI.createLabel({
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 }));
 
-waltmanContainer.children[2].add(Ti.UI.createView({
-	height:'1dp',
-	width:'117dp',
-	bottom:0,
-	left:0,
-	backgroundColor:defaultBlueColor
-}));
+if(!isBB){
+	waltmanContainer.children[2].add(Ti.UI.createView({
+		height:'1dp',
+		width:'117dp',
+		bottom:0,
+		left:0,
+		backgroundColor:defaultBlueColor
+	}));
+}
 
 var sabrinaContainer = Ti.UI.createView({
 	layout:'vertical',
 	height:Ti.UI.SIZE,
 	width:Ti.UI.SIZE,
-	top:'78dp',
+	top:(isBB) ? '83dp':'78dp',
 	left:'15dp'
 });
 
@@ -334,7 +341,7 @@ sabrinaContainer.add(Ti.UI.createLabel({
 }));
 
 sabrinaContainer.add(Ti.UI.createLabel({
-	text:'sbarczynski@bialik.ca\t     416-783-3346 ext. 207',
+	text:'sbarczynski@bialik.ca (416-783-3346 ext. 207)',
 	font:{
 		fontSize:13,
 		fontFamily:helveticafont,
@@ -344,13 +351,15 @@ sabrinaContainer.add(Ti.UI.createLabel({
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 }));
 
-sabrinaContainer.children[2].add(Ti.UI.createView({
-	height:'1dp',
-	width:'127dp',
-	bottom:0,
-	left:0,
-	backgroundColor:defaultBlueColor
-}));
+if(!isBB){
+	sabrinaContainer.children[2].add(Ti.UI.createView({
+		height:'1dp',
+		width:'127dp',
+		bottom:0,
+		left:0,
+		backgroundColor:defaultBlueColor
+	}));
+}
 
 peopleInfoContainer.add(waltmanContainer);
 peopleInfoContainer.add(sabrinaContainer);
