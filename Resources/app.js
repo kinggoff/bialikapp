@@ -25,6 +25,7 @@ var prospectMenuList = require('lib/prospectiveparentsmenulist');
 var currentMenuList = require('lib/currentparentsmenulist');
 var drawer = require('lib/drawer');
 var bialik_app = require('lib/bialik_app');
+var calendar = require('lib/calendar');
 
 bialik_app.init();
 

@@ -76,7 +76,7 @@ viewmountBranchButton.add(Ti.UI.createLabel({
 	left:'5dp'
 }));
 viewmountBranchButtonContainer.add(viewmountBranchButton);
-//Prospective Button end
+//viewmount Button end
 
 //Current Button
 var benEdithBranchButtonContainer = Ti.UI.createView({

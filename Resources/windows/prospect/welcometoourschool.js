@@ -1,8 +1,21 @@
-var prospectWelcomeToOurSchoolScrollView = Ti.UI.createScrollView({
-	layout:'vertical',
-	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp'
-});
+if(isBB){
+	var prospectWelcomeToOurSchoolScrollView = Ti.UI.createTableView({
+		zIndex:1,
+		top:(isIOS) ? '62dp':'40dp'
+	});
+	
+	var prospectWelcomeToOurSchoolScrollViewRow = Ti.UI.createTableViewRow({
+		className:'forumEvent',
+		layout:'vertical',
+		height:Ti.UI.SIZE
+	});
+}else{
+	var prospectWelcomeToOurSchoolScrollView = Ti.UI.createScrollView({
+		layout:'vertical',
+		zIndex:1,
+		top:(isIOS) ? '62dp':'40dp'
+	});
+}
 
 var mainLogoImageView = Ti.UI.createImageView({
 	image:path+'images/welcomeScreen/logo.png',
@@ -55,9 +68,22 @@ var welcomeToOurSchoolLabel = Ti.UI.createLabel({
 	text:welcomeToOurSchoolContent
 });
 
-prospectWelcomeToOurSchoolScrollView.add(mainLogoImageView);
-prospectWelcomeToOurSchoolScrollView.add(headingLabel);
-prospectWelcomeToOurSchoolScrollView.add(welcomeToOurSchoolLabel);
+if(isBB){
+	prospectWelcomeToOurSchoolScrollViewRow.add(mainLogoImageView);
+	prospectWelcomeToOurSchoolScrollViewRow.add(headingLabel);
+	prospectWelcomeToOurSchoolScrollViewRow.add(welcomeToOurSchoolLabel);
+	
+	
+	var TD = [];
+	TD.push(prospectWelcomeToOurSchoolScrollViewRow);
+	prospectWelcomeToOurSchoolScrollView.setData(TD);
+}else{
+	prospectWelcomeToOurSchoolScrollView.add(mainLogoImageView);
+	prospectWelcomeToOurSchoolScrollView.add(headingLabel);
+	prospectWelcomeToOurSchoolScrollView.add(welcomeToOurSchoolLabel);
+}
+
+
 
 exports.getView = function(){
 	return prospectWelcomeToOurSchoolScrollView;

@@ -1,8 +1,21 @@
-var prospectHomeScrollView = Ti.UI.createScrollView({
-	layout:'vertical',
-	zIndex:1,
-	top:(isIOS) ? '62dp':'40dp'
-});
+if(isBB){
+	var prospectHomeScrollView = Ti.UI.createTableView({
+		zIndex:1,
+		top:(isIOS) ? '62dp':'40dp'
+	});
+	
+	var prospectHomeScrollViewRow = Ti.UI.createTableViewRow({
+		className:'forumEvent',
+		layout:'vertical',
+		height:Ti.UI.SIZE
+	});
+}else{
+	var prospectHomeScrollView = Ti.UI.createScrollView({
+		layout:'vertical',
+		zIndex:1,
+		top:(isIOS) ? '62dp':'40dp'
+	});
+}
 
 var mainLogoImageView = Ti.UI.createImageView({
 	image:path+'images/welcomeScreen/logo.png',
@@ -43,12 +56,25 @@ var footorImageView = Ti.UI.createImageView({
 	width:'80%',
 	top:'25dp'
 });
+if(isBB){
+	prospectHomeScrollViewRow.add(mainLogoImageView);
+	prospectHomeScrollViewRow.add(welcomeToOurSchoolLabel);
+	prospectHomeScrollViewRow.add(schoolImageView1);
+	prospectHomeScrollViewRow.add(dearParentsLabel);
+	prospectHomeScrollViewRow.add(footorImageView);
+	
+	
+	var TD = [];
+	TD.push(prospectHomeScrollViewRow);
+	prospectHomeScrollView.setData(TD);
+}else{
+	prospectHomeScrollView.add(mainLogoImageView);
+	prospectHomeScrollView.add(welcomeToOurSchoolLabel);
+	prospectHomeScrollView.add(schoolImageView1);
+	prospectHomeScrollView.add(dearParentsLabel);
+	prospectHomeScrollView.add(footorImageView);
+}
 
-prospectHomeScrollView.add(mainLogoImageView);
-prospectHomeScrollView.add(welcomeToOurSchoolLabel);
-prospectHomeScrollView.add(schoolImageView1);
-prospectHomeScrollView.add(dearParentsLabel);
-prospectHomeScrollView.add(footorImageView);
 
 exports.getView = function(){
 	return prospectHomeScrollView;

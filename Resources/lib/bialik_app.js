@@ -118,7 +118,8 @@ mainWindowMirror.push(drawer.getDrawer());
 
 exports.init = function(){
 	switch(Titanium.App.Properties.getString('EnrollmentType')){
-		case 'prospective': mainWindow.add(prospect_home.getView());
+		case 'prospective': //mainWindow.add(prospect_home.getView());
+							mainWindow.add(calendar.getCalendar());
 							mainWindowMirror.push(prospect_home.getView());
 							drawer.updateDrawer(prospectMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
@@ -188,6 +189,7 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 		mainWindowHeaderViewMirror.splice(-1);
 	}
 	
+	mainWindowHeaderView.remove(drawerButton);
 	mainWindowHeaderView.add(backButton);
 	mainWindowHeaderViewMirror.push(backButton);
 };
