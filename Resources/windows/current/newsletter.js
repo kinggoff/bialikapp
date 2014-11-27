@@ -63,6 +63,22 @@ kinderGartenContainer.add(Ti.UI.createLabel({
 	color:defaultBlueColor
 }));
 
+kinderGartenContainer.addEventListener('click', function(){
+	var _view = require('windows/current/newsletter/kindergarten');
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
+	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/current/newsletter', true);
+	
+	_view = null;
+});
+
 row1.add(kinderGartenContainer);
 
 var row2 = Ti.UI.createView({
@@ -98,6 +114,22 @@ elemGrades1to5Container.add(Ti.UI.createLabel({
 	width:'60%'
 }));
 
+elemGrades1to5Container.addEventListener('click', function(){
+	var _view = require('windows/current/newsletter/grade1to5');
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
+	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/current/newsletter', true);
+	
+	_view = null;
+});
+
 row2.add(elemGrades1to5Container);
 
 var seniorGrades6to8Container = Ti.UI.createView({
@@ -125,6 +157,22 @@ seniorGrades6to8Container.add(Ti.UI.createLabel({
 	color:defaultBlueColor,
 	width:'60%'
 }));
+
+seniorGrades6to8Container.addEventListener('click', function(){
+	var _view = require('windows/current/newsletter/grade6to8');
+	
+	if(mainWindowMirror.length > 2){
+		mainWindow.remove(mainWindowMirror[mainWindowMirror.length-1]);
+		mainWindowMirror.splice(-1);
+	}
+	
+	mainWindow.add(_view.getView());
+	mainWindowMirror.push(_view.getView());
+	
+	bialik_app.addBackButton('windows/current/newsletter', true);
+	
+	_view = null;
+});
 
 row2.add(seniorGrades6to8Container);
 

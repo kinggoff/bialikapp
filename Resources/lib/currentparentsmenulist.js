@@ -36,31 +36,31 @@ var currentConfig = [
 	},
 	{
 		name:'Safe Arrival',
-		icon:path+'images/icons/welcome.png',
+		icon:path+'images/icons/safe-arrival.png',
 		win:'safearrival'
 	},
 	{
 		name:'Newsletter',
-		icon:path+'images/icons/school-life.png',
+		icon:path+'images/icons/newsletter.png',
 		win:'newsletter'
 	},
 	{
 		name:'Calendar',
-		icon:path+'images/icons/application-info.png',
+		icon:path+'images/icons/calendar.png',
 		win:'calendar'
 	},
 	{
 		name:'School Forms',
-		icon:path+'images/icons/book-recommendations.png',
+		icon:path+'images/icons/school-forms.png',
 		win:'schoolforms'
 	},
 	{
 		name:'PTA Info',
-		icon:path+'images/icons/facebook.png',
+		icon:path+'images/icons/pta.png',
 		win:'ptainfo'
 	},
 	{
-		name:'Facebbok',
+		name:'Facebook',
 		icon:path+'images/icons/facebook.png',
 		win:''
 	},
@@ -71,7 +71,7 @@ var currentConfig = [
 	},
 	{
 		name:'Settings',
-		icon:path+'images/icons/settings.png',
+		icon:path+'images/icons/settings_current.png',
 		win:'settings'
 	},
 ];
