@@ -105,7 +105,7 @@ tempText.addEventListener('click',function(){
 	}
 });
 
-mainWindowHeaderView.add(tempText); //this will cause issue w/ the back button and will make the header title disapper
+mainWindowHeaderView.add(tempText); //asdasd
 
 
 mainWindowHeaderView.add(mainWindowHeaderLabel);
@@ -118,16 +118,15 @@ mainWindowMirror.push(drawer.getDrawer());
 
 exports.init = function(){
 	switch(Titanium.App.Properties.getString('EnrollmentType')){
-		case 'prospective': //mainWindow.add(prospect_home.getView());
-							mainWindow.add(calendar.getCalendar());
+		case 'prospective': drawer.updateDrawer(prospectMenuList.getList());
+							mainWindow.add(prospect_home.getView());
 							mainWindowMirror.push(prospect_home.getView());
-							drawer.updateDrawer(prospectMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;
-		case 'current': 	mainWindow.add(current_home.getView());
+		case 'current': 	drawer.updateDrawer(currentMenuList.getList());
+							mainWindow.add(current_home.getView());
 							mainWindowMirror.push(current_home.getView());
-							drawer.updateDrawer(currentMenuList.getList());
 							mainWindowHeaderView.add(drawerButton);
 							bialik_app.updateTitle('Home');
 							break;

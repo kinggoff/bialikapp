@@ -32,7 +32,7 @@ var currentConfig = [
 	{
 		name:'Home',
 		icon:path+'images/icons/home.png',
-		win:''
+		win:'home'
 	},
 	{
 		name:'Safe Arrival',
@@ -40,7 +40,7 @@ var currentConfig = [
 		win:'safearrival'
 	},
 	{
-		name:'News Letter',
+		name:'Newsletter',
 		icon:path+'images/icons/school-life.png',
 		win:'newsletter'
 	},
@@ -57,7 +57,7 @@ var currentConfig = [
 	{
 		name:'PTA Info',
 		icon:path+'images/icons/facebook.png',
-		win:'pta'
+		win:'ptainfo'
 	},
 	{
 		name:'Facebbok',

@@ -1,15 +1,8 @@
 // Taking Screen Width
-var screenWidth = 322;
+var screenWidth = platformWidth;
+
 var needToChangeSize = false;
 
-var screenWidthActual = Ti.Platform.displayCaps.platformWidth;
-
-if (Ti.Platform.osname === 'android') {
-if (screenWidthActual >= 641) {
-	screenWidth = screenWidthActual;
-	needToChangeSize = true;
-	}
-}
 
 // Main Window of the Month View.
 var win = Ti.UI.createView({
@@ -27,7 +20,6 @@ var backButton = Ti.UI.createButton({
 // Previous Button - Tool Bar
 var prevMonth = Ti.UI.createImageView({
 	left:'15dp',
-	//width:'15dp',
 	height:'15dp',
 	image:path+'images/icons/calendar-back.png'
 });
@@ -35,7 +27,6 @@ var prevMonth = Ti.UI.createImageView({
 // Next Button - Tool Bar
 var nextMonth = Ti.UI.createImageView({
 	right:'15dp',
-	//width:'15dp',
 	height:'15dp',
 	image:path+'images/icons/calendar-next.png'
 });
@@ -43,7 +34,7 @@ var nextMonth = Ti.UI.createImageView({
 // Month Title - Tool Bar
 var monthTitle = Ti.UI.createLabel({
 	width:Ti.UI.SIZE,
-	height:'24dp',
+	height:Ti.UI.SIZE,
 	textAlign:'center',
 	color:defaultBlueColor,
 	font:{
@@ -55,17 +46,20 @@ var monthTitle = Ti.UI.createLabel({
 // Tool Bar
 var toolBar = Ti.UI.createView({
 	top:'0dp',
-	width:'322dp',
-	height:'50dp',
+	//width:'322dp',
+	width:String(platformWidth+unit),
+	height:'60dp', //50dp tana ni ha
 	backgroundColor:'transparent',
-	layout:'vertical'
+	layout:'vertical',
+	
 });
 
 // Tool Bar - View which contain Title Prev. & Next Button
 var toolBarTitle = Ti.UI.createView({
 	top:'3dp',
-	width:'322dp',
-	height:'24dp'
+	//width:'322dp',
+	width:String(platformWidth+unit),
+	height:'34dp'
 });
 
 toolBarTitle.add(prevMonth);
@@ -75,17 +69,21 @@ toolBarTitle.add(nextMonth);
 // Tool Bar - Day's
 var toolBarDays = Ti.UI.createView({
 	top:'2dp',
-	width:'322dp',
+	//width:'322dp',
+	width:String((platformWidth+5)+unit),
 	height:'33dp',
 	layout:'horizontal',
 	left:'-1dp'
 });
 
+var eachDayWidth = platformWidth/7;
+
 toolBarDays.sunday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Sun',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -98,7 +96,8 @@ toolBarDays.monday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Mon',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -111,7 +110,8 @@ toolBarDays.tuesday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Tue',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -124,7 +124,8 @@ toolBarDays.wednesday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Wed',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -137,7 +138,8 @@ toolBarDays.thursday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Thu',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -150,7 +152,8 @@ toolBarDays.friday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Fri',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -163,7 +166,8 @@ toolBarDays.saturday = Ti.UI.createLabel({
 	left:'0dp',
 	height:'30dp',
 	text:'Sat',
-	width:'46dp',
+	//width:'46dp',
+	width:String(eachDayWidth+unit),
 	textAlign:'center',
 	font:{
 		fontSize:12,
@@ -188,8 +192,10 @@ toolBar.add(toolBarDays);
 dayView = function(e) {
 	var label = Ti.UI.createLabel({
 		current:e.current,
-		width:'46dp',
-		height:'44dp',
+		//width:'46dp',
+		//height:'44dp',
+		width:String(eachDayWidth+unit),
+		height:String(eachDayWidth+unit),
 		//backgroundColor:'#FFDCDCDF',
 		borderColor:'#b7cae5',
 		borderWidth:0.3,
@@ -253,9 +259,10 @@ var calView = function(a, b, c) {
 	//create main calendar view
 	var mainView = Ti.UI.createView({
 		layout:'horizontal',
-		width:'322dp',
-		height:'auto',
-		top:'60dp'
+		//width:'322dp',
+		width:String((platformWidth+5)+unit),
+		height:Ti.UI.SIZE,
+		top:'70dp'
 	});
 
 	//set the time

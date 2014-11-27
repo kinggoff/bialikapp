@@ -1,0 +1,1 @@
+/Users/isaacmanubag/Documents/Titanium_Studio_Workspace/bialikapp/Resources/windows/current/ptainfo.js

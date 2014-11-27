@@ -1,4 +1,4 @@
-var prospectSettingsScrollView = Ti.UI.createScrollView({
+var currentSettingsScrollView = Ti.UI.createScrollView({
 	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp'
@@ -38,8 +38,8 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 	left:'30dp'
 }));
 
-prospectSettingsScrollView.add(configureYourExperienceContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(configureYourExperienceContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -76,8 +76,8 @@ pushNotificationSwitch.addEventListener('change', function(e) {
 
 pushNotificationContainer.add(pushNotificationLabel);
 pushNotificationContainer.add(pushNotificationSwitch);
-prospectSettingsScrollView.add(pushNotificationContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(pushNotificationContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -117,8 +117,8 @@ var viewmountBranchCheckBox = Ti.UI.createImageView({
 viewmountBranchContainer.add(viewmountOpaqueBG);
 viewmountBranchContainer.add(viewmountBranchLabel);
 viewmountBranchContainer.add(viewmountBranchCheckBox);
-prospectSettingsScrollView.add(viewmountBranchContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(viewmountBranchContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -160,8 +160,8 @@ var benEdithBranchCheckBox = Ti.UI.createImageView({
 benEdithBranchContainer.add(benEdithOpaqueBG);
 benEdithBranchContainer.add(benEdithBranchLabel);
 benEdithBranchContainer.add(benEdithBranchCheckBox);
-prospectSettingsScrollView.add(benEdithBranchContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(benEdithBranchContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -195,8 +195,8 @@ var prospectParentCheckBox = Ti.UI.createImageView({
 
 prospectParentContainer.add(prospectParentLabel);
 prospectParentContainer.add(prospectParentCheckBox);
-prospectSettingsScrollView.add(prospectParentContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(prospectParentContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -230,8 +230,8 @@ var currentParentCheckBox = Ti.UI.createImageView({
 
 currentParentContainer.add(currentParentLabel);
 currentParentContainer.add(currentParentCheckBox);
-prospectSettingsScrollView.add(currentParentContainer);
-prospectSettingsScrollView.add(Ti.UI.createView({
+currentSettingsScrollView.add(currentParentContainer);
+currentSettingsScrollView.add(Ti.UI.createView({
 	height:'1dp',
 	backgroundColor:'#3d72bf',
 	width:Ti.UI.FILL
@@ -239,6 +239,81 @@ prospectSettingsScrollView.add(Ti.UI.createView({
 
 //current parent end
 
+//Your app content is automatically configured start
+var yourAppContentLabel = Ti.UI.createLabel({
+	color:defaultBlueColor,
+	height:Ti.UI.SIZE,
+	width:'80%',
+	font:{
+		fontSize:12,
+		fontFamily:helveticafont,
+	},
+	top:'15dp',
+	text:'Your app content is automatically configured to correspond with the class(es) your child(ren) attend(s) when you sign in as a Current Parent.',
+	bottom:'15dp',
+});
+
+currentSettingsScrollView.add(yourAppContentLabel);
+//Your app content is automatically configured end
+
+//list of children start
+var childrenListConfig = [
+	{
+		name:'Immanuel',
+		section:'3A'
+	},
+	{
+		name:'Cayla',
+		section:'5B'
+	},
+	{
+		name:'Geoff',
+		section:'8A'
+	},
+	{
+		name:'Sarah',
+		section:'8C'
+	},
+];
+
+for (var i=0; i < childrenListConfig.length; i++) {
+	var child = childrenListConfig[i];
+	
+	var row = Ti.UI.createView({
+		layout:'horizontal',
+		height:'20dp',
+		width:Ti.UI.FILL
+	});
+	
+	row.add(Ti.UI.createLabel({
+		color:defaultBlueColor,
+		height:Ti.UI.SIZE,
+		width:'40%',
+		font:{
+			fontSize:12,
+			fontFamily:helveticafont,
+			fontWeight:'Bold'
+		},
+		text:child.name + ':',
+		textAlign:Ti.UI.TEXT_ALIGNMENT_RIGHT
+	}));
+	
+	row.add(Ti.UI.createLabel({
+		color:defaultBlueColor,
+		height:Ti.UI.SIZE,
+		width:'60%',
+		font:{
+			fontSize:12,
+			fontFamily:helveticafont,
+		},
+		text:' ' + child.section,
+		textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
+	}));
+	
+	currentSettingsScrollView.add(row);
+};
+//list of children end
+
 exports.getView = function(){
-	return prospectSettingsScrollView;
+	return currentSettingsScrollView;
 };
