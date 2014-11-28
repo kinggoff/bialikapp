@@ -71,8 +71,8 @@ kinderGartenContainer.addEventListener('click', function(){
 		mainWindowMirror.splice(-1);
 	}
 	
-	mainWindow.add(_view.getView());
-	mainWindowMirror.push(_view.getView());
+	mainWindow.add(_view.getView('kindergarten'));
+	mainWindowMirror.push(_view.getView('kindergarten'));
 	
 	bialik_app.addBackButton('windows/current/newsletter', true);
 	
@@ -122,8 +122,8 @@ elemGrades1to5Container.addEventListener('click', function(){
 		mainWindowMirror.splice(-1);
 	}
 	
-	mainWindow.add(_view.getView());
-	mainWindowMirror.push(_view.getView());
+	mainWindow.add(_view.getView('grades1to5'));
+	mainWindowMirror.push(_view.getView('grades1to5'));
 	
 	bialik_app.addBackButton('windows/current/newsletter', true);
 	
@@ -166,8 +166,8 @@ seniorGrades6to8Container.addEventListener('click', function(){
 		mainWindowMirror.splice(-1);
 	}
 	
-	mainWindow.add(_view.getView());
-	mainWindowMirror.push(_view.getView());
+	mainWindow.add(_view.getView('grades6to8'));
+	mainWindowMirror.push(_view.getView('grades6to8'));
 	
 	bialik_app.addBackButton('windows/current/newsletter', true);
 	

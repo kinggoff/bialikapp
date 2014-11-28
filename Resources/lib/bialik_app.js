@@ -159,7 +159,7 @@ exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 		font:{
 			fontSize:12,
 			fontFamily:helveticafont,
-			fontWeight:'Bold'
+			fontWeight:'bold'
 		},
 	});
 	

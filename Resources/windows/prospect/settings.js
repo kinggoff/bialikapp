@@ -17,7 +17,7 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 	font:{
 		fontSize:15,
 		fontFamily:helveticafont,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	top:'25dp',
 	text:'Configure Your Experience',

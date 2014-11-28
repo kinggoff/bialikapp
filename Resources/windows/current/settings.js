@@ -17,7 +17,7 @@ configureYourExperienceContainer.add(Ti.UI.createLabel({
 	font:{
 		fontSize:15,
 		fontFamily:helveticafont,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	top:'25dp',
 	text:'Configure Your Experience',
@@ -292,7 +292,7 @@ for (var i=0; i < childrenListConfig.length; i++) {
 		font:{
 			fontSize:12,
 			fontFamily:helveticafont,
-			fontWeight:'Bold'
+			fontWeight:'bold'
 		},
 		text:child.name + ':',
 		textAlign:Ti.UI.TEXT_ALIGNMENT_RIGHT

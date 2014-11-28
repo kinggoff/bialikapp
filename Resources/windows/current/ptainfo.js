@@ -40,7 +40,7 @@ controls.PDFList = Ti.UI.createButton({
 	font:{
 		fontFamily:helveticafont,
 		fontSize:20,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	backgroundColor:'#c2d0e3',
 	width:'49%',
@@ -53,7 +53,7 @@ controls.MSGList = Ti.UI.createButton({
 	font:{
 		fontFamily:helveticafont,
 		fontSize:18,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	backgroundColor:'transparent',
 	width:'49%',

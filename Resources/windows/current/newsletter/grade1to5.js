@@ -1,34 +1,147 @@
-var grade1to5ScrollView = Ti.UI.createScrollView({
-	layout:'vertical',
+var grades1to5TableView = Ti.UI.createTableView({
+	backgroundColor:'transparent',
+	separatorColor:'transparent',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp'
 });
 
-grade1to5ScrollView.add(Ti.UI.createLabel({
-	text:'Grades 1-5',
-	top:'15dp',
+var grades1to5TableHeaderView = Ti.UI.createView({
+	height:'100dp',
+	width:Ti.UI.SIZE
+});
+
+grades1to5TableHeaderView.add(Ti.UI.createLabel({
+	color:defaultBlueColor,
 	font:{
 		fontFamily:helveticafont,
-		fontWeight:'bold',
-		fontSize:16
+		fontSize:18,
+		fontWeight:'bold'
 	},
-	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
-	color:defaultBlueColor,
-	width:'90%'
+	text:'What is New BI@LIK',
+	left:'15dp',
+	top:'40dp'
 }));
 
-grade1to5ScrollView.add(Ti.UI.createLabel({
-	text:'The Elementary Division is a dynamic child-centred learning environment with a challenging, enriching program divided into a half-day each of general and Jewish studies.\n\nHebrew and a connection to the State of Israel are the central focuses of the Jewish studies curriculum, which is a full Hebrew-language immersion program.  Students learn oral and written language, literature, Bible, the Jewish holidays, history, geography and traditional practices, as well as Yiddish. The program includes the use of varied strategies that make the learning enjoyable and effective. \n\nThe general studies curriculum follows the guidelines of the Ministry of Education and Training.  Emphasis is on academic excellence in all subject areas: language arts, mathematics, science and digital literacy, social studies, French and physical education. Students acquire the depth of knowledge and skills needed to succeed in the 21st century. Curriculum-related field trips and special outings expose students to drama, music, art and multicultural themes.\n\nTeachers plan lessons and use varied teaching strategies in order to meet the needs of different learners. The program incorporates art, music, varied learning styles, emotional intelligence, and student-centered activities to build concepts. Students focus on developing problem solving, decision-making, critical thinking and communication skills, as well as on expressing their creativity in a variety of ways. Student needs are met through extensive resource and support services along with opportunities for challenge and enrichment. Smartboards are used in every classroom.\n\nBialik offers an extensive and rich extra-curricular program with a variety of activities catering to the many interests of our students. \n\nCharacter education, through the emphasis of specific traits and the development of Mentschlichkeit, is an integral part of both the Jewish and general studies programs, and is embedded in all aspects of school life.\n\nBialik has made a commitment to equipping all classrooms with technology for 21st century learning.  All Kindergarten classrooms have Smartboards.  This allows the children to use interactive computer technology right from the start of their schooling.  In addition, the Smartboard allows children to learn developmentally appropriate concepts in an innovative way.  Kindergarten students also have access to a shared iPad cart.\n\nBialik Kindergarten children are happily engaged in all aspects of their learning. Bialik students are proud of their learning and demonstrate it daily!',
-	top:'15dp',
+grades1to5TableHeaderView.add(Ti.UI.createLabel({
+	color:defaultBlueColor,
 	font:{
 		fontFamily:helveticafont,
 		fontSize:16
 	},
-	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
-	color:defaultBlueColor,
-	width:'90%'
+	text:'Issue 1, Sep 04, 2014',
+	left:'15dp',
+	bottom:'20dp'
 }));
+
+grades1to5TableView.setHeaderView(grades1to5TableHeaderView);
+
+var grades1to5Config = [
+	{
+		title:'Sample1',
+		content:'Hadouken'
+	},
+	{
+		title:'SampSample1Sample1Samp1le1',
+		content:'Hadouken2'
+	},
+	{
+		title:'SampSample1Sample1le1',
+		content:'Hadouke3'
+	},
+	{
+		title:'SamSample1Sample1Sample1SaSamSample1Sample1Sample1Sample1ple1mple1ple1',
+		content:'Hadouke4'
+	},
+	{
+		title:'SamSample1ple1',
+		content:'Hadouken5'
+	},
+	{
+		title:'SSample1ample1',
+		content:'Hadouken6'
+	},
+];
+var grades1to5TabelData = [];
+
+for (var i=0; i < grades1to5Config.length; i++) {
+	var grades1to5 = grades1to5Config[i];
+	
+	var row = Ti.UI.createTableViewRow({
+		className:'forumEvent',
+		height:Ti.UI.SIZE,
+		layout:'vertical',
+		selectedBackgroundColor:'transparent',
+		bottom:'10dp'
+	});
+	
+	row.arrowAndTitleContainer = Ti.UI.createView({
+		width:Ti.UI.FILL,
+		height:Ti.UI.SIZE
+	});
+	
+	row.arrowAndTitleContainer.arrowIcon = Ti.UI.createImageView({
+		image:path+'images/icons/newsletter-right-arrow.png',
+		left:'15dp',
+		height:'10dp',
+		width:'10dp',
+		top:'4dp'
+	});
+	row.arrowAndTitleContainer.add(row.arrowAndTitleContainer.arrowIcon);
+	
+	row.arrowAndTitleContainer.newsletterTitle = Ti.UI.createLabel({
+		color:defaultBlueColor,
+		font:{
+			fontFamily:helveticafont,
+			fontSize:14,
+			fontWeight:'bold'
+		},
+		text:grades1to5.title,
+		left:'35dp',
+	});
+	row.arrowAndTitleContainer.add(row.arrowAndTitleContainer.newsletterTitle);
+	
+	row.add(row.arrowAndTitleContainer);
+	row.toAdd = Ti.UI.createLabel({
+		text:grades1to5.content,
+		left:'35dp',
+		height:Ti.UI.SIZE,
+		color:'#000',
+		font:{
+			fontFamily:helveticafont,
+			fontSize:14
+		},
+	});
+	row.toggle = false;
+	
+	grades1to5TabelData.push(row);
+};
+
+grades1to5TableView.setData(grades1to5TabelData);
+
+grades1to5TableView.addEventListener('click', function(e){
+	var index = e.index;
+	
+	if(grades1to5TabelData[index].toggle == false){
+		grades1to5TabelData[index].add(grades1to5TabelData[index].toAdd);
+		var t1 = Ti.UI.create2DMatrix();
+			t1 = t1.rotate(90);
+		var a1 = Ti.UI.createAnimation();
+			a1.transform = t1;
+			a1.duration = 0;
+		grades1to5TabelData[index].arrowAndTitleContainer.arrowIcon.animate(a1);
+		grades1to5TabelData[index].toggle = true;
+	}else{
+		grades1to5TabelData[index].remove(grades1to5TabelData[index].toAdd);
+		var t2 = Ti.UI.create2DMatrix();
+			t2 = t2.rotate(1);
+		var a2 = Ti.UI.createAnimation();
+			a2.transform = t2;
+			a2.duration = 0;
+		grades1to5TabelData[index].arrowAndTitleContainer.arrowIcon.animate(a2);
+		grades1to5TabelData[index].toggle = false;
+	}
+});
 
 exports.getView = function(){
-	return grade1to5ScrollView;
+	return grades1to5TableView;
 };

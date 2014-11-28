@@ -269,7 +269,7 @@ waltmanContainer.add(Ti.UI.createLabel({
 	text:'Danielle Waltman',
 	font:{
 		fontSize:13,
-		fontWeight:'Bold',
+		fontWeight:'bold',
 		fontFamily:helveticafont,
 	},
 	color:defaultBlueColor,
@@ -321,7 +321,7 @@ sabrinaContainer.add(Ti.UI.createLabel({
 	text:'Sabrina Barczynski',
 	font:{
 		fontSize:13,
-		fontWeight:'Bold',
+		fontWeight:'bold',
 		fontFamily:helveticafont,
 	},
 	color:defaultBlueColor,

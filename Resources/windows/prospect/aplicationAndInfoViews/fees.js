@@ -47,7 +47,7 @@ feesScrollView.add(Ti.UI.createLabel({
 	font:{
 		fontFamily:helveticafont,
 		fontSize:16,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
 	color:defaultBlueColor,
@@ -61,7 +61,7 @@ feesScrollView.add(Ti.UI.createLabel({
 	font:{
 		fontFamily:helveticafont,
 		fontSize:16,
-		fontWeight:'Bold'
+		fontWeight:'bold'
 	},
 	textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT,
 	color:defaultBlueColor,
