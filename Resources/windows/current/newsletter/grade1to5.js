@@ -1,16 +1,16 @@
-var grades1to5TableView = Ti.UI.createTableView({
-	backgroundColor:'transparent',
-	separatorColor:'transparent',
+var grades1to5Win = Ti.UI.createView({
+	layout:'vertical',
 	zIndex:1,
 	top:(isIOS) ? '62dp':'40dp'
 });
 
-var grades1to5TableHeaderView = Ti.UI.createView({
-	height:'100dp',
-	width:Ti.UI.SIZE
+var grades1to5TableView = Ti.UI.createTableView({
+	backgroundColor:'transparent',
+	separatorColor:'transparent',
+	top:'20dp'
 });
 
-grades1to5TableHeaderView.add(Ti.UI.createLabel({
+grades1to5Win.add(Ti.UI.createLabel({
 	color:defaultBlueColor,
 	font:{
 		fontFamily:helveticafont,
@@ -22,7 +22,7 @@ grades1to5TableHeaderView.add(Ti.UI.createLabel({
 	top:'40dp'
 }));
 
-grades1to5TableHeaderView.add(Ti.UI.createLabel({
+grades1to5Win.add(Ti.UI.createLabel({
 	color:defaultBlueColor,
 	font:{
 		fontFamily:helveticafont,
@@ -30,10 +30,10 @@ grades1to5TableHeaderView.add(Ti.UI.createLabel({
 	},
 	text:'Issue 1, Sep 04, 2014',
 	left:'15dp',
-	bottom:'20dp'
+	top:'10dp'
 }));
 
-grades1to5TableView.setHeaderView(grades1to5TableHeaderView);
+grades1to5Win.add(grades1to5TableView);
 
 var grades1to5Config = [
 	{
@@ -61,6 +61,7 @@ var grades1to5Config = [
 		content:'Hadouken6'
 	},
 ];
+
 var grades1to5TabelData = [];
 
 for (var i=0; i < grades1to5Config.length; i++) {
@@ -97,6 +98,7 @@ for (var i=0; i < grades1to5Config.length; i++) {
 		},
 		text:grades1to5.title,
 		left:'35dp',
+		width:'70%'
 	});
 	row.arrowAndTitleContainer.add(row.arrowAndTitleContainer.newsletterTitle);
 	
@@ -143,5 +145,5 @@ grades1to5TableView.addEventListener('click', function(e){
 });
 
 exports.getView = function(){
-	return grades1to5TableView;
+	return grades1to5Win;
 };

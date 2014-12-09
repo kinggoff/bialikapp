@@ -405,14 +405,14 @@ win.open({
 
 var slideNext = Titanium.UI.createAnimation({
 	// left:'-322',
-	duration:500
+	duration:(isBB) ? 0:500
 });
 
 slideNext.left = (screenWidth * -1);
 
 var slideReset = Titanium.UI.createAnimation({
 	// left:'-1',
-	duration:500
+	duration:(isBB) ? 0:500
 });
 
 if (needToChangeSize == false) {
@@ -438,7 +438,10 @@ nextMonth.addEventListener('click', function() {
 	}
 
 	thisCalendarView.animate(slideNext);
-	nextCalendarView.animate(slideReset);
+	if(!isBB){
+		nextCalendarView.animate(slideReset);
+	}
+	
 	
 	setTimeout(function() {
 		thisCalendarView.left = (screenWidth * -1) + 'dp';
@@ -465,11 +468,14 @@ prevMonth.addEventListener('click', function() {
 	if (b == 0) {
 		b = 11;
 		a--;
-		}else{
+	}else{
 		b--;
 	}
 	thisCalendarView.animate(slidePrev);
-	prevCalendarView.animate(slideReset);
+	if(!isBB){
+		prevCalendarView.animate(slideReset);
+	}
+	
 	setTimeout(function() {
 	thisCalendarView.left = screenWidth + 'dp';
 	if (needToChangeSize == false) {

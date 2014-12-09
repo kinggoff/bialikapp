@@ -151,10 +151,10 @@ exports.addDrawerButton = function(){
 
 exports.addBackButton = function(viewToGoBack, addDrawerAfterBackPress){
 	var backButton = Ti.UI.createButton({
-		title:'  Back',
+		title:(isBB) ? 'Back':'  Back',
 		backgroundImage:path+'images/back-btn-bg.png',
 		height:'30dp',
-		width:'50dp',
+		width:(isBB) ? '60dp':'50dp',
 		left:'5dp',
 		font:{
 			fontSize:12,
